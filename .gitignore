@@ -1,0 +1,49 @@
+﻿# Interne Arbeitsdateien
+AUFGABEN.txt
+TEST.txt
+TESTS.txt
+TESTERGEBNISSE.txt
+BUGREPORT.md
+DIAGNOSE_REPORT.md
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# JavaScript / Browser-Extension
+node_modules/
+npm-debug.log*
+yarn-error.log*
+coverage/
+.nyc_output/
+
+# Build- und Release-Artefakte
+dist/
+build/
+releases/
+*.zip
+*.crx
+_native_host/nm_manifest.generated.json
+
+# Logs und lokale Hilfsdateien
+logs/
+*.log
+*.bak
+
+# IDE / Editor
+.claude/
+.vscode/
+.idea/
+
+# Betriebssystem
+desktop.ini
+Thumbs.db
+.DS_Store
+# ---- Interne Steuerungsdateien ----
+DECISIONS.md
+PORTIERUNGSPLAN.md
+TODO.md
+DONE.md
+STATE.md
+ENTWICKLUNGSPLAN.md

@@ -1,0 +1,9 @@
+{
+  "name": "com.file_bricks.rss_bookstore",
+  "description": "RSS-BOOKSTORE Native Messaging Host for folder export and sync.",
+  "path": "__HOST_DIR__\\nm_host.bat",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://__REPLACE_WITH_EXTENSION_ID__/"
+  ]
+}
