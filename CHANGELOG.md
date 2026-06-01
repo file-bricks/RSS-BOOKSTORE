@@ -5,6 +5,11 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
 
 ## [Unreleased]
 
+### Geändert / Changed
+
+- `PORTIERUNGSPLAN.md` usecase-basiert auf die reale Alpha-Architektur geschärft: RSS-BOOKSTORE bleibt GitHub-/Sideloading-Extension mit Windows-Native-Messaging-Host; Browser-Store, Windows Store, Web/PWA, Android und iOS sind Nicht-Ziele.
+- `AUFGABEN.txt` und `STATE.md` auf den Plattform-Review und die nächsten manuellen Smoke-Schritte synchronisiert.
+
 ## [1.0.0-alpha] - 2026-06-01
 
 > **Alpha-Release:** Noch nicht im Alltagsbetrieb getestet. Für Power-User und Entwickler.
