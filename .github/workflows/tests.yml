@@ -1,0 +1,38 @@
+name: RSS-BOOKSTORE tests
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: windows-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Compile Python host
+        run: python -m compileall -q _native_host tests
+
+      - name: Run JavaScript extension tests
+        run: npm.cmd test
+
+      - name: Run Python Native Messaging tests
+        run: python -m unittest discover -s tests -p "test_*.py" -v

@@ -9,6 +9,7 @@ import unittest
 from _native_host.favextract_core import (
     BookmarkNode,
     ensure_unique_path,
+    normalize_http_url,
     read_url_file,
     sanitize_filename,
     scan_url_folder,
@@ -58,6 +59,24 @@ class UrlFileTests(unittest.TestCase):
         with TemporaryDirectory() as temp_dir:
             self.assertIsNone(write_url_file(temp_dir, "Empty", ""))
 
+    def test_write_url_file_rejects_non_http_and_multiline_urls(self) -> None:
+        with TemporaryDirectory() as temp_dir:
+            self.assertIsNone(write_url_file(temp_dir, "Script", "javascript:alert(1)"))
+            self.assertIsNone(write_url_file(temp_dir, "Local", "file:///C:/Example/feed.url"))
+            self.assertIsNone(write_url_file(temp_dir, "Injected", "https://example.com\r\nIconFile=C:\\evil.ico"))
+            self.assertEqual(list(Path(temp_dir).glob("*.url")), [])
+
+    def test_read_url_file_ignores_unsafe_urls(self) -> None:
+        with TemporaryDirectory() as temp_dir:
+            shortcut = Path(temp_dir) / "Unsafe.url"
+            shortcut.write_text("[InternetShortcut]\nURL=javascript:alert(1)\n", encoding="utf-8")
+            self.assertIsNone(read_url_file(shortcut))
+
+    def test_normalize_http_url_accepts_only_single_line_http_urls(self) -> None:
+        self.assertEqual(normalize_http_url(" https://example.com/path "), "https://example.com/path")
+        self.assertIsNone(normalize_http_url("ftp://example.com/file"))
+        self.assertIsNone(normalize_http_url("https://example.com/\nIconFile=x"))
+
 
 class ScanFolderTests(unittest.TestCase):
     def test_scan_url_folder_builds_tree(self) -> None:
@@ -89,4 +108,3 @@ class ScanFolderTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

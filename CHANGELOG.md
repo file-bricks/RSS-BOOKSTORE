@@ -5,10 +5,24 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
 
 ## [Unreleased]
 
+### Sicherheit / Security
+
+- Feed- und `.url`-Ziel-URLs werden vor Bookmark- und Native-Host-Ausgabe auf
+  einzeilige `http`-/`https`-URLs begrenzt; unsichere Schemata wie
+  `javascript:`/`file:` und CRLF-Injection-Versuche werden verworfen.
+
 ### Geändert / Changed
 
-- `PORTIERUNGSPLAN.md` usecase-basiert auf die reale Alpha-Architektur geschärft: RSS-BOOKSTORE bleibt GitHub-/Sideloading-Extension mit Windows-Native-Messaging-Host; Browser-Store, Windows Store, Web/PWA, Android und iOS sind Nicht-Ziele.
-- `AUFGABEN.txt` und `STATE.md` auf den Plattform-Review und die nächsten manuellen Smoke-Schritte synchronisiert.
+- `ui/popup.html` + `ui/options.html`: **UI-Redesign v2** — Terminal-Refined-Ästhetik:
+  Dark-first (GitHub-Dark-Palette `#0d1117`), Terminal-Grün (`#00e676`) als Akzent statt
+  generischem Rot, `ui-monospace` für Brand/URLs/Status. Popup: Header-Bereich,
+  Feed-Count als grünes Badge, monospace Status-Bar. Options: `# Section`-Header,
+  dunklere Input-Felder, Code-Font für Feed-URLs, Info/Warn-Boxen mit Farbkodierung.
+  Light-Mode bleibt als vollständige Alternative erhalten.
+- `.github/workflows/tests.yml` ergänzt: Windows-CI für JavaScript-Extension-Tests,
+  Python-Native-Messaging-Tests und `compileall`.
+- `PORTIERUNGSPLAN.md` usecase-basiert auf die reale Alpha-Architektur geschärft.
+- `AUFGABEN.txt` und `STATE.md` synchronisiert.
 
 ## [1.0.0-alpha] - 2026-06-01
 

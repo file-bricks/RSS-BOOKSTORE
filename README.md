@@ -1,5 +1,7 @@
 # RSS-BOOKSTORE
 
+[![RSS-BOOKSTORE tests](https://github.com/file-bricks/RSS-BOOKSTORE/actions/workflows/tests.yml/badge.svg)](https://github.com/file-bricks/RSS-BOOKSTORE/actions/workflows/tests.yml)
+
 > **Alpha — nicht produktiv getestet / Alpha — not production-tested**
 > This is an alpha release. Core features are implemented and covered by automated
 > tests, but the extension has not been validated in sustained everyday use.
@@ -30,6 +32,8 @@ the simpler RSS-BOOK extension remains the store-friendly version.
 - Automatic OneDrive default export path: `OneDrive\RSS-BOOKSTORE`
 - Per-feed optional host permissions instead of blanket `<all_urls>`
 - Native Messaging host with install, dry-run, and uninstall support
+- Dark-first popup and options UI with a terminal-refined visual style and a
+  full light-mode fallback
 
 ## Requirements
 
@@ -119,6 +123,8 @@ npm.cmd test
 python -m unittest discover -s tests -p "test_*.py" -v
 ```
 
+The same checks run on GitHub Actions in the `RSS-BOOKSTORE tests` workflow.
+
 `npm test` may be blocked by PowerShell execution policy on Windows; `npm.cmd
 test` avoids that wrapper issue.
 
@@ -183,7 +189,9 @@ RSS-BOOKSTORE/
 ## Status
 
 Native Messaging export and bidirectional sync are implemented and covered by
-automated tests. The extension now also ships an original generated icon set.
+automated tests. The extension ships an original generated icon set and a
+dark-first popup/options interface. It remains an alpha sideloading build until
+there is sustained everyday-use validation.
 
 ## Related Project / Geschwisterprojekt
 

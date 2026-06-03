@@ -6,6 +6,7 @@ from dataclasses import dataclass, field
 import os
 from pathlib import Path
 import re
+from urllib.parse import urlsplit
 
 
 INVALID_FILENAME_CHARS = '<>:"/\\|?*'
@@ -75,7 +76,7 @@ def read_url_file(path: str | Path) -> str | None:
             for line in handle:
                 stripped = line.strip()
                 if stripped.upper().startswith("URL="):
-                    return stripped[4:]
+                    return normalize_http_url(stripped[4:])
     except OSError:
         return None
     return None
@@ -97,7 +98,8 @@ def ensure_unique_path(path: str | Path) -> Path:
 
 def write_url_file(folder_path: str | Path, title: str, href: str) -> Path | None:
     """Create a .url shortcut file and return its final path."""
-    if not href:
+    safe_href = normalize_http_url(href)
+    if not safe_href:
         return None
 
     target_dir = Path(folder_path)
@@ -108,10 +110,22 @@ def write_url_file(folder_path: str | Path, title: str, href: str) -> Path | Non
         filename = f"{filename}.url"
 
     shortcut_path = ensure_unique_path(target_dir / filename)
-    content = f"[InternetShortcut]\r\nURL={href}\r\n"
+    content = f"[InternetShortcut]\r\nURL={safe_href}\r\n"
     with shortcut_path.open("w", encoding="utf-8", newline="") as handle:
         handle.write(content)
     return shortcut_path
+
+
+def normalize_http_url(href: str | None) -> str | None:
+    """Return a single-line http(s) URL, or None for unsafe shortcut targets."""
+    text = str(href or "").strip()
+    if not text or "\r" in text or "\n" in text:
+        return None
+
+    parsed = urlsplit(text)
+    if parsed.scheme.lower() not in {"http", "https"} or not parsed.netloc:
+        return None
+    return text
 
 
 def scan_url_folder(folder_path: str | Path) -> BookmarkNode:
@@ -135,9 +149,9 @@ def scan_url_folder(folder_path: str | Path) -> BookmarkNode:
 __all__ = [
     "BookmarkNode",
     "ensure_unique_path",
+    "normalize_http_url",
     "read_url_file",
     "sanitize_filename",
     "scan_url_folder",
     "write_url_file",
 ]
-

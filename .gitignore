@@ -5,6 +5,22 @@ TESTS.txt
 TESTERGEBNISSE.txt
 BUGREPORT.md
 DIAGNOSE_REPORT.md
+DECISIONS.md
+PORTIERUNGSPLAN.md
+TODO.md
+DONE.md
+STATE.md
+ENTWICKLUNGSPLAN.md
+
+# Secrets und lokale Konfiguration
+.env
+.env.*
+credentials.json
+client_secret*.json
+token.json
+*.pem
+*.key
+keyring/
 
 # Python
 __pycache__/
@@ -40,10 +56,3 @@ logs/
 desktop.ini
 Thumbs.db
 .DS_Store
-# ---- Interne Steuerungsdateien ----
-DECISIONS.md
-PORTIERUNGSPLAN.md
-TODO.md
-DONE.md
-STATE.md
-ENTWICKLUNGSPLAN.md

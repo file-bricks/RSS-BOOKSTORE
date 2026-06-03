@@ -14,6 +14,7 @@ import {
   usesBookmarks,
   usesNativeFolder
 } from "../lib/sync.js";
+import { normalizeHttpUrl } from "../lib/url_safety.js";
 
 const originalNow = Date.now;
 
@@ -47,6 +48,25 @@ test("selectFreshFeedItems skips seen, duplicate, and linkless items", () => {
   );
 
   assert.deepEqual(fresh.map(item => item.title), ["Fresh A", "Fresh B"]);
+});
+
+test("feed item URL normalization rejects unsafe bookmark and native targets", () => {
+  const items = [
+    { title: "Script", link: "javascript:alert(1)" },
+    { title: "Local", link: "file:///C:/Example/Documents/private.txt" },
+    { title: "Injected", link: "https://example.test/story\r\nIconFile=C:\\evil.ico" },
+    { title: "Safe", link: " https://example.test/safe " }
+  ];
+
+  assert.equal(normalizeHttpUrl(items[0].link), "");
+  assert.deepEqual(selectFreshFeedItems({ seen: {} }, items).map(item => item.title), ["Safe"]);
+  assert.deepEqual(toNativeExportItems({ title: "Feed" }, items), [
+    {
+      folderParts: ["RSS", "Feed"],
+      title: "Safe",
+      url: "https://example.test/safe"
+    }
+  ]);
 });
 
 test("buildSeenPatch marks delivered items and trims oldest entries", () => {

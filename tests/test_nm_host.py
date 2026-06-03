@@ -51,6 +51,26 @@ class HandleRequestTests(unittest.TestCase):
             self.assertEqual(response["requestId"], 7)
             self.assertIn("Tech News", str(created_path))
 
+    def test_export_items_rejects_unsafe_url_targets(self) -> None:
+        with TemporaryDirectory() as temp_dir:
+            with self.assertRaises(NativeHostError) as cm:
+                handle_request(
+                    {
+                        "cmd": "export_items",
+                        "baseDir": temp_dir,
+                        "items": [
+                            {
+                                "folderParts": ["RSS", "Tech News"],
+                                "title": "Injected",
+                                "url": "https://example.com\r\nIconFile=C:\\evil.ico",
+                            }
+                        ],
+                    }
+                )
+
+            self.assertEqual(cm.exception.code, "invalid_request")
+            self.assertFalse(list(Path(temp_dir).rglob("*.url")))
+
     def test_export_items_rolls_back_partial_writes_on_failure(self) -> None:
         with TemporaryDirectory() as temp_dir:
             base_dir = Path(temp_dir)

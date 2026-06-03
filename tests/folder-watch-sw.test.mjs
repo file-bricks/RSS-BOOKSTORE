@@ -191,3 +191,37 @@ test("folder change events replace stale native mappings when bookmark update fa
     b2: "C:/RSS/RSS/Tech Feed/Old Story.url"
   });
 });
+
+test("folder change events skip unsafe shortcut targets", async () => {
+  const store = createStore();
+  const calls = { create: [], get: [], remove: [], update: [] };
+  installChromeMock(store, calls);
+
+  const module = await import(`../sw.js?folder-watch-unsafe-url=${Date.now()}`);
+
+  const response = await module.handleNativeFolderEvent({
+    event: "folder_changed",
+    changes: {
+      added: [
+        {
+          relativePath: "RSS/Tech Feed/Unsafe.url",
+          path: "C:/RSS/RSS/Tech Feed/Unsafe.url",
+          title: "Unsafe",
+          href: "javascript:alert(1)"
+        },
+        {
+          relativePath: "RSS/Tech Feed/Injected.url",
+          path: "C:/RSS/RSS/Tech Feed/Injected.url",
+          title: "Injected",
+          href: "https://example.test/a\r\nIconFile=C:\\evil.ico"
+        }
+      ]
+    }
+  });
+
+  assert.deepEqual(calls.create, []);
+  assert.deepEqual(response.results.added, [
+    { ok: true, skipped: "entry" },
+    { ok: true, skipped: "entry" }
+  ]);
+});

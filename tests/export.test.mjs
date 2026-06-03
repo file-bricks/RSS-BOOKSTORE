@@ -144,6 +144,21 @@ test("exportFeedToFolder writes Windows .url format with CRLF", async () => {
   assert.ok(content.includes("\r\n"), "expected CRLF line endings");
 });
 
+test("exportFeedToFolder skips unsafe shortcut URLs", async () => {
+  setupChrome([
+    { title: "Script", url: "javascript:alert(1)" },
+    { title: "Injected", url: "https://example.com/a\r\nIconFile=C:\\evil.ico" },
+    { title: "Safe", url: "https://example.com/safe" }
+  ]);
+  const handle = makeDirHandle();
+  setupPicker(handle);
+
+  const count = await exportFeedToFolder("folder-id");
+
+  assert.equal(count, 1);
+  assert.deepEqual(Object.keys(handle.written), ["Safe.url"]);
+});
+
 // --- exportAllFeedsToFolder ---
 
 test("exportAllFeedsToFolder exports bookmarks from all feeds with bookmark folders", async () => {

@@ -3,6 +3,7 @@ import { fetchFeedAndParse } from "./lib/rss.js";
 import { ensureFeedFolder, addItemsToBookmarks, pruneOldBookmarks } from "./lib/bookmarks.js";
 import { createNativeClient } from "./lib/native.js";
 import { getFeedHostPattern, hasFeedHostPermission } from "./lib/permissions.js";
+import { normalizeHttpUrl } from "./lib/url_safety.js";
 import { collectFeedLinksFromDocument, probeCommonFeedPaths } from "./lib/discovery.js";
 import {
   buildSeenPatch,
@@ -603,7 +604,7 @@ function findFeedIdForNativeEntry(feeds, entry, settings = {}) {
 }
 
 function getNativeEntryHref(entry) {
-  return typeof entry?.href === "string" ? entry.href.trim() : "";
+  return normalizeHttpUrl(entry?.href);
 }
 
 function getNativeEntryPath(entry) {
