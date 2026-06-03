@@ -108,8 +108,9 @@ try {
       execFileSync("powershell", ["-NoProfile", "-Command", listEntriesScript], { encoding: "utf8" }),
     );
 
-    assert.ok(entries.some((entry) => entry.endsWith("scripts\\generate_icons.py")));
-    assert.equal(entries.some((entry) => entry.includes("__pycache__")), false);
+    const normalizedEntries = entries.map((entry) => entry.replaceAll("\\", "/"));
+    assert.ok(normalizedEntries.some((entry) => entry.endsWith("scripts/generate_icons.py")));
+    assert.equal(normalizedEntries.some((entry) => entry.includes("__pycache__")), false);
   } finally {
     fs.rmSync(outputDir, { recursive: true, force: true });
     fs.rmSync(dummyCache, { force: true });
