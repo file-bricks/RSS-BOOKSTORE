@@ -79,6 +79,23 @@ function Assert-UnderPath {
     }
 }
 
+function Get-Sha256Hex {
+    param(
+        [Parameter(Mandatory = $true)][string]$Path
+    )
+
+    $sha256 = [System.Security.Cryptography.SHA256]::Create()
+    $stream = [System.IO.File]::OpenRead($Path)
+    try {
+        $hashBytes = $sha256.ComputeHash($stream)
+        return (($hashBytes | ForEach-Object { $_.ToString('x2') }) -join '')
+    }
+    finally {
+        $stream.Dispose()
+        $sha256.Dispose()
+    }
+}
+
 function Get-RelativePath {
     param(
         [Parameter(Mandatory = $true)][string]$Path,
@@ -245,8 +262,8 @@ New-InstallInstructions -ReleasePackageName $packageName |
 
 Compress-Archive -LiteralPath $stagingPath -DestinationPath $zipPath -Force
 
-$hash = Get-FileHash -LiteralPath $zipPath -Algorithm SHA256
-"$($hash.Hash.ToLowerInvariant())  $(Split-Path -Leaf $zipPath)" |
+$hash = Get-Sha256Hex -Path $zipPath
+"$hash  $(Split-Path -Leaf $zipPath)" |
     Set-Content -LiteralPath $checksumPath -Encoding ASCII
 
 Remove-Item -LiteralPath $stagingPath -Recurse -Force
@@ -255,5 +272,5 @@ Remove-Item -LiteralPath $stagingPath -Recurse -Force
     packageName = $packageName
     zipPath = $zipPath
     checksumPath = $checksumPath
-    sha256 = $hash.Hash.ToLowerInvariant()
+    sha256 = $hash
 } | ConvertTo-Json -Depth 4
