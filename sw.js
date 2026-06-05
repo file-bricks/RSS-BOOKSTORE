@@ -160,8 +160,8 @@ async function updateOneFeed(feedId) {
     await upsertFeed(feedId, {
       lastFetch: Date.now(),
       lastError: "",
-      lastEtag: parsed.etag ?? feed.lastEtag,
-      lastModified: parsed.lastModified ?? feed.lastModified,
+      lastEtag: parsed.etag || feed.lastEtag,
+      lastModified: parsed.lastModified || feed.lastModified,
       title: feed.title || parsed.title
     });
     return;
@@ -223,8 +223,8 @@ async function updateOneFeed(feedId) {
   const patch = {
     lastFetch: Date.now(),
     lastError: nativeError,
-    lastEtag: parsed.etag ?? feed.lastEtag,
-    lastModified: parsed.lastModified ?? feed.lastModified,
+    lastEtag: parsed.etag || feed.lastEtag,
+    lastModified: parsed.lastModified || feed.lastModified,
     title: feed.title || parsed.title,
     seen: buildSeenPatch(feed, freshItems)
   };
