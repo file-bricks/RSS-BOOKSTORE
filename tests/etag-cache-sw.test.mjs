@@ -234,3 +234,58 @@ test("etag preserved when server returns 200 with new items and no ETag header",
 
   module.stopNativeFolderWatch();
 });
+
+test("title updated when parsed.items.length === 0 (empty feed response)", async () => {
+  const msgRef = { current: null };
+  const store = {
+    settings: {
+      mode: "BOOKMARKS",
+      exportRoot: "",
+      globalIntervalMinutes: 0
+    },
+    feeds: {
+      feedC: {
+        id: "feedC",
+        enabled: true,
+        notify: false,
+        url: "https://example.test/feed3.xml",
+        title: "",
+        bookmarkFolderId: "folder-c",
+        seen: {},
+        lastFetch: 0,
+        lastEtag: "",
+        lastModified: "",
+        lastError: ""
+      }
+    }
+  };
+
+  globalThis.chrome = buildChromeMock(store, msgRef);
+
+  globalThis.fetch = async () => ({
+    ok: true,
+    status: 200,
+    headers: { get() { return ""; } },
+    text: async () => `<rss version="2.0"><channel><title>My Empty Feed</title></channel></rss>`
+  });
+
+  globalThis.DOMParser = class {
+    parseFromString() {
+      return createRssDoc("My Empty Feed", []);
+    }
+  };
+
+  const module = await import(`../sw.js?title-empty-feed=${Date.now()}`);
+  assert.equal(typeof msgRef.current, "function");
+
+  const response = await new Promise(resolve => {
+    const alive = msgRef.current({ action: "updateFeed", feedId: "feedC" }, {}, resolve);
+    assert.equal(alive, true);
+  });
+
+  assert.deepEqual(response, { ok: true });
+  assert.equal(store.feeds.feedC.title, "My Empty Feed",
+    "title must be updated from parsed feed even when items list is empty");
+
+  module.stopNativeFolderWatch();
+});

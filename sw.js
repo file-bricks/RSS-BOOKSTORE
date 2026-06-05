@@ -149,7 +149,8 @@ async function updateOneFeed(feedId) {
       lastFetch: Date.now(),
       lastError: "",
       lastEtag: parsed.etag || feed.lastEtag,
-      lastModified: parsed.lastModified || feed.lastModified
+      lastModified: parsed.lastModified || feed.lastModified,
+      title: feed.title || parsed.title
     });
     return;
   }
