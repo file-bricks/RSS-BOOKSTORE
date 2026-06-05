@@ -11,7 +11,7 @@ import unittest
 class NativeHostInstallerTests(unittest.TestCase):
     def test_installer_dry_run_reports_manifest_and_registry_plan(self) -> None:
         project_root = Path(__file__).resolve().parents[1]
-        installer = project_root / "_native_host" / "install_nm_host.ps1"
+        installer = project_root / "native_host" / "install_nm_host.ps1"
         extension_id = "a" * 32
 
         self.assertTrue(installer.exists(), "install_nm_host.ps1 is missing")
@@ -40,8 +40,8 @@ class NativeHostInstallerTests(unittest.TestCase):
         self.assertEqual(plan["action"], "install")
         self.assertEqual(plan["hostName"], "com.file_bricks.rss_bookstore")
         self.assertEqual(plan["allowedOrigins"], [f"chrome-extension://{extension_id}/"])
-        self.assertTrue(plan["hostPath"].endswith(r"_native_host\nm_host.bat"))
-        self.assertTrue(plan["manifestPath"].endswith(r"_native_host\nm_manifest.generated.json"))
+        self.assertTrue(plan["hostPath"].endswith(r"native_host\nm_host.bat"))
+        self.assertTrue(plan["manifestPath"].endswith(r"native_host\nm_manifest.generated.json"))
         self.assertEqual(set(plan["browsers"]), {"Chrome", "Edge", "Brave"})
         self.assertTrue(
             any(

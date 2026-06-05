@@ -45,12 +45,11 @@ $includeEntries = @(
     [ordered]@{ source = 'lib'; type = 'directory' },
     [ordered]@{ source = 'ui'; type = 'directory' },
     [ordered]@{ source = 'icons'; type = 'directory' },
-    [ordered]@{ source = '_native_host\__init__.py'; type = 'file' },
-    [ordered]@{ source = '_native_host\favextract_core.py'; type = 'file' },
-    [ordered]@{ source = '_native_host\install_nm_host.ps1'; type = 'file' },
-    [ordered]@{ source = '_native_host\nm_host.bat'; type = 'file' },
-    [ordered]@{ source = '_native_host\nm_host.py'; type = 'file' },
-    [ordered]@{ source = '_native_host\nm_manifest.json'; type = 'file' }
+    [ordered]@{ source = 'native_host\favextract_core.py'; type = 'file' },
+    [ordered]@{ source = 'native_host\install_nm_host.ps1'; type = 'file' },
+    [ordered]@{ source = 'native_host\nm_host.bat'; type = 'file' },
+    [ordered]@{ source = 'native_host\nm_host.py'; type = 'file' },
+    [ordered]@{ source = 'native_host\nm_manifest.json'; type = 'file' }
 )
 
 $excludedEntries = @(
@@ -60,8 +59,8 @@ $excludedEntries = @(
     '.pytest_cache',
     '__pycache__',
     'releases',
-    '_native_host\nm_manifest.generated.json',
-    '_native_host\__pycache__'
+    'native_host\nm_manifest.generated.json',
+    'native_host\__pycache__'
 )
 
 function Assert-UnderPath {
@@ -184,17 +183,17 @@ RSS-BOOKSTORE Native Messaging Setup
 4. Open PowerShell in the extracted "$ReleasePackageName" folder.
 5. Run:
 
-powershell -NoProfile -ExecutionPolicy Bypass -File .\_native_host\install_nm_host.ps1 -ExtensionId aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+powershell -NoProfile -ExecutionPolicy Bypass -File .\native_host\install_nm_host.ps1 -ExtensionId aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 
 Replace the example ID with the real extension ID.
 
 Preview the registration without writing registry keys:
 
-powershell -NoProfile -ExecutionPolicy Bypass -File .\_native_host\install_nm_host.ps1 -ExtensionId aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -DryRun
+powershell -NoProfile -ExecutionPolicy Bypass -File .\native_host\install_nm_host.ps1 -ExtensionId aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -DryRun
 
 Uninstall the registration:
 
-powershell -NoProfile -ExecutionPolicy Bypass -File .\_native_host\install_nm_host.ps1 -ExtensionId aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -Uninstall
+powershell -NoProfile -ExecutionPolicy Bypass -File .\native_host\install_nm_host.ps1 -ExtensionId aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -Uninstall
 "@
 }
 
@@ -219,9 +218,9 @@ function New-ReleasePlan {
         generated = @('INSTALL_NATIVE_HOST.txt')
         excluded = $excludedEntries
         installCommands = @(
-            'powershell -NoProfile -ExecutionPolicy Bypass -File .\_native_host\install_nm_host.ps1 -ExtensionId aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-            'powershell -NoProfile -ExecutionPolicy Bypass -File .\_native_host\install_nm_host.ps1 -ExtensionId aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -DryRun',
-            'powershell -NoProfile -ExecutionPolicy Bypass -File .\_native_host\install_nm_host.ps1 -ExtensionId aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -Uninstall'
+            'powershell -NoProfile -ExecutionPolicy Bypass -File .\native_host\install_nm_host.ps1 -ExtensionId aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+            'powershell -NoProfile -ExecutionPolicy Bypass -File .\native_host\install_nm_host.ps1 -ExtensionId aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -DryRun',
+            'powershell -NoProfile -ExecutionPolicy Bypass -File .\native_host\install_nm_host.ps1 -ExtensionId aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -Uninstall'
         )
     }
 }

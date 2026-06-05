@@ -11,8 +11,8 @@ test('README documents the native host install flow', () => {
     '-DryRun',
     '-Uninstall',
     'com.file_bricks.rss_bookstore',
-    '_native_host\\nm_manifest.generated.json',
-    '_native_host\\nm_host.bat',
+    'native_host\\nm_manifest.generated.json',
+    'native_host\\nm_host.bat',
     'PYTHONIOENCODING=utf-8',
   ];
 

@@ -32,4 +32,4 @@ GitHub publishing checklist:
 - Mention that RSS-BOOKSTORE is sideload-only because Native Messaging needs a
   local registry registration.
 - Tell users to load the extracted folder as an unpacked extension before
-  running `_native_host\install_nm_host.ps1` with their generated extension ID.
+  running `native_host\install_nm_host.ps1` with their generated extension ID.

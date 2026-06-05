@@ -13,7 +13,7 @@ from tempfile import TemporaryDirectory
 import unittest
 from unittest.mock import patch
 
-from _native_host.nm_host import NativeHostError, handle_request, serve
+from native_host.nm_host import NativeHostError, handle_request, serve
 
 
 def _encode_message(message: dict[str, object]) -> bytes:
@@ -87,7 +87,7 @@ class HandleRequestTests(unittest.TestCase):
                 path.write_text(f"[InternetShortcut]\nURL={href}\n", encoding="utf-8")
                 return path
 
-            with patch("_native_host.nm_host.write_url_file", side_effect=flaky_write_url_file):
+            with patch("native_host.nm_host.write_url_file", side_effect=flaky_write_url_file):
                 with self.assertRaises(NativeHostError) as cm:
                     handle_request(
                         {
@@ -339,7 +339,7 @@ class ServeTests(unittest.TestCase):
             self.assertEqual(response["state"], {})
 
     def test_script_entrypoint_imports_when_started_directly(self) -> None:
-        host_script = Path(__file__).resolve().parents[1] / "_native_host" / "nm_host.py"
+        host_script = Path(__file__).resolve().parents[1] / "native_host" / "nm_host.py"
         with TemporaryDirectory() as temp_dir:
             result = subprocess.run(
                 [sys.executable, str(host_script)],

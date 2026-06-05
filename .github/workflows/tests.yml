@@ -28,11 +28,11 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Compile Python host
-        run: python -m compileall -q _native_host tests
+      - name: Check Python syntax
+        run: python -c "from pathlib import Path; [compile(path.read_text(encoding='utf-8'), str(path), 'exec') for folder in ('native_host', 'tests') for path in Path(folder).glob('*.py')]"
 
       - name: Run JavaScript extension tests
         run: npm.cmd test
 
       - name: Run Python Native Messaging tests
-        run: python -m unittest discover -s tests -p "test_*.py" -v
+        run: python -B -m unittest discover -s tests -p "test_*.py" -v

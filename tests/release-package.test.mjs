@@ -39,11 +39,11 @@ test("GitHub release package plan is self-contained", () => {
     "lib",
     "ui",
     "icons",
-    "_native_host\\favextract_core.py",
-    "_native_host\\install_nm_host.ps1",
-    "_native_host\\nm_host.bat",
-    "_native_host\\nm_host.py",
-    "_native_host\\nm_manifest.json",
+    "native_host\\favextract_core.py",
+    "native_host\\install_nm_host.ps1",
+    "native_host\\nm_host.bat",
+    "native_host\\nm_host.py",
+    "native_host\\nm_manifest.json",
   ]) {
     assert.ok(included.has(expected), `release plan is missing ${expected}`);
   }
@@ -64,7 +64,7 @@ test("GitHub release package excludes development-only files", () => {
     ".pytest_cache",
     "__pycache__",
     "releases",
-    "_native_host\\nm_manifest.generated.json",
+    "native_host\\nm_manifest.generated.json",
   ]) {
     assert.ok(plan.excluded.includes(excluded), `release plan should exclude ${excluded}`);
   }

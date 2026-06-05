@@ -59,30 +59,30 @@ Open PowerShell in the project folder and replace the example ID with the ID
 shown by your browser:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File .\_native_host\install_nm_host.ps1 -ExtensionId aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+powershell -NoProfile -ExecutionPolicy Bypass -File .\native_host\install_nm_host.ps1 -ExtensionId aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 ```
 
-The installer writes `_native_host\nm_manifest.generated.json` and registers the
+The installer writes `native_host\nm_manifest.generated.json` and registers the
 host name `com.file_bricks.rss_bookstore` for Chrome, Edge, and Brave under
-`HKCU` by default. The manifest points to `_native_host\nm_host.bat`, which
-starts `_native_host\nm_host.py` with `PYTHONIOENCODING=utf-8`.
+`HKCU` by default. The manifest points to `native_host\nm_host.bat`, which
+starts `native_host\nm_host.py` with `PYTHONIOENCODING=utf-8`.
 
 Preview the registry and manifest plan without writing anything:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File .\_native_host\install_nm_host.ps1 -ExtensionId aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -DryRun
+powershell -NoProfile -ExecutionPolicy Bypass -File .\native_host\install_nm_host.ps1 -ExtensionId aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -DryRun
 ```
 
 Register only selected browsers:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File .\_native_host\install_nm_host.ps1 -ExtensionId aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -Browser Edge
+powershell -NoProfile -ExecutionPolicy Bypass -File .\native_host\install_nm_host.ps1 -ExtensionId aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -Browser Edge
 ```
 
 Uninstall the Native Messaging registration:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File .\_native_host\install_nm_host.ps1 -ExtensionId aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -Uninstall
+powershell -NoProfile -ExecutionPolicy Bypass -File .\native_host\install_nm_host.ps1 -ExtensionId aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -Uninstall
 ```
 
 Use `-Scope LocalMachine` only when a machine-wide registration is explicitly
@@ -110,7 +110,7 @@ New feeds request only their specific host permission when they are added.
   extension ID and browser registry target.
 - If the browser was already open while installing the host, restart the browser
   once so it reloads Native Messaging registrations.
-- If Python is not found, install Python or adjust `_native_host\nm_host.bat` to
+- If Python is not found, install Python or adjust `native_host\nm_host.bat` to
   call the correct interpreter.
 
 ## Development
@@ -120,10 +120,12 @@ Messaging host tests separately:
 
 ```powershell
 npm.cmd test
-python -m unittest discover -s tests -p "test_*.py" -v
+python -B -m unittest discover -s tests -p "test_*.py" -v
 ```
 
 The same checks run on GitHub Actions in the `RSS-BOOKSTORE tests` workflow.
+The `-B` flag keeps Python from writing `__pycache__` folders into the unpacked
+extension directory.
 
 `npm test` may be blocked by PowerShell execution policy on Windows; `npm.cmd
 test` avoids that wrapper issue.
@@ -155,7 +157,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\package_github_rel
 The package script writes `releases\v1.0.0\RSS-BOOKSTORE-1.0.0-github.zip` and
 `releases\v1.0.0\SHA256SUMS.txt`. The ZIP contains the unpacked extension, the
 release packaging script, the Native Messaging host,
-`_native_host\install_nm_host.ps1`, and a short `INSTALL_NATIVE_HOST.txt` setup
+`native_host\install_nm_host.ps1`, and a short `INSTALL_NATIVE_HOST.txt` setup
 note. Tests, caches, generated host manifests, and prior release output are
 excluded.
 
@@ -176,7 +178,7 @@ RSS-BOOKSTORE/
 |-- ui/
 |   |-- options.html
 |   `-- options.js
-|-- _native_host/
+|-- native_host/
 |   |-- favextract_core.py
 |   |-- install_nm_host.ps1
 |   |-- nm_host.bat

@@ -14,7 +14,7 @@ from typing import BinaryIO
 if __package__ in {None, ""}:
     sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from _native_host.favextract_core import read_url_file, scan_url_folder, sanitize_filename, write_url_file
+from native_host.favextract_core import read_url_file, scan_url_folder, sanitize_filename, write_url_file
 
 
 HOST_NAME = "com.file_bricks.rss_bookstore"

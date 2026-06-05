@@ -19,11 +19,12 @@ RSS-BOOKSTORE ist eine Manifest-V3-Browser-Erweiterung ohne Build-Schritt.
 3. Entwicklermodus aktivieren
 4. Diesen Ordner als entpackte Erweiterung laden
 5. Extension-ID aus den Browser-Erweiterungsdetails kopieren
-6. Native Messaging Host registrieren: `powershell -NoProfile -ExecutionPolicy Bypass -File .\_native_host\install_nm_host.ps1 -ExtensionId <ID>`
+6. Native Messaging Host registrieren: `powershell -NoProfile -ExecutionPolicy Bypass -File .\native_host\install_nm_host.ps1 -ExtensionId <ID>`
 7. Änderung testen, Extension neu laden, Verhalten im Pull Request beschreiben
 
 JavaScript-Tests: `npm.cmd test`
-Python-Tests: `python -m unittest discover -s tests -p "test_*.py" -v`
+Python-Tests: `python -B -m unittest discover -s tests -p "test_*.py" -v`
+`-B` verhindert `__pycache__`-Ordner im entpackten Extension-Pfad.
 
 ### Pull Requests
 
@@ -58,11 +59,12 @@ RSS-BOOKSTORE is a Manifest V3 browser extension with no build step.
 3. Enable developer mode
 4. Load this folder as an unpacked extension
 5. Copy the generated extension ID from the browser extension details page
-6. Register the Native Messaging host: `powershell -NoProfile -ExecutionPolicy Bypass -File .\_native_host\install_nm_host.ps1 -ExtensionId <ID>`
+6. Register the Native Messaging host: `powershell -NoProfile -ExecutionPolicy Bypass -File .\native_host\install_nm_host.ps1 -ExtensionId <ID>`
 7. Test the change, reload the extension, and describe the behavior in the pull request
 
 JavaScript tests: `npm.cmd test`
-Python tests: `python -m unittest discover -s tests -p "test_*.py" -v`
+Python tests: `python -B -m unittest discover -s tests -p "test_*.py" -v`
+`-B` prevents `__pycache__` folders in the unpacked extension path.
 
 ### Pull Requests
 

@@ -6,7 +6,7 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 import unittest
 
-from _native_host.favextract_core import (
+from native_host.favextract_core import (
     BookmarkNode,
     ensure_unique_path,
     normalize_http_url,

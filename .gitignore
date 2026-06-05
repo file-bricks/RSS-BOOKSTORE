@@ -1,4 +1,4 @@
-﻿# Interne Arbeitsdateien
+# Interne Arbeitsdateien
 AUFGABEN.txt
 TEST.txt
 TESTS.txt
@@ -40,7 +40,7 @@ build/
 releases/
 *.zip
 *.crx
-_native_host/nm_manifest.generated.json
+native_host/nm_manifest.generated.json
 
 # Logs und lokale Hilfsdateien
 logs/
