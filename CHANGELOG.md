@@ -5,6 +5,16 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
 
 ## [Unreleased]
 
+### Dokumentation / Documentation
+
+- README um Start-Here-Tabelle, Suchkontext und klare Abgrenzung zu gehosteten
+  RSS-Diensten, allgemeinen Bookmark-Managern und der Store-Version RSS-BOOK
+  ergänzt.
+- `llms.txt` als maschinenlesbarer Projektkontext für Crawler, LLM-Agenten und
+  Repo-Kataloge ergänzt.
+- `package.json` um Beschreibung und Keywords für die lokale Extension- und
+  Native-Messaging-Positionierung erweitert.
+
 ### Sicherheit / Security
 
 - Feed- und `.url`-Ziel-URLs werden vor Bookmark- und Native-Host-Ausgabe auf

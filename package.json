@@ -1,7 +1,18 @@
 {
   "name": "rss-bookstore",
   "private": true,
+  "description": "Local-first RSS/Atom Chromium extension with bookmark output, Native Messaging, and Windows folder sync.",
   "type": "module",
+  "keywords": [
+    "rss",
+    "atom",
+    "browser-extension",
+    "chromium-extension",
+    "native-messaging",
+    "bookmark-sync",
+    "windows",
+    "local-first"
+  ],
   "scripts": {
     "test": "node --test tests/*.mjs"
   }

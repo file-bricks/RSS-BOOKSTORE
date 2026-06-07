@@ -17,6 +17,16 @@ Browser-Erweiterung, die RSS-/Atom-Einträge als Lesezeichen speichert und sie
 über einen Native-Messaging-Host bidirektional mit einem Windows-Ordner
 synchronisieren kann.
 
+## Start Here
+
+| If you want to... | Start with |
+|---|---|
+| Install the extension manually | [Install Extension](#install-extension) |
+| Register the Windows Native Messaging host | [Install Native Messaging Host](#install-native-messaging-host) |
+| Compare this with the store-friendly sibling | [Related Project / Geschwisterprojekt](#related-project--geschwisterprojekt) |
+| Audit the local sync boundary | [Scope](#scope) and [Troubleshooting](#troubleshooting) |
+| Let crawlers or LLM agents classify the repo | [`llms.txt`](llms.txt) |
+
 ## Scope
 
 RSS-BOOKSTORE is intended for GitHub/sideloading distribution, not for browser
@@ -101,6 +111,21 @@ Open the extension options page to add feeds and select a sync mode:
 In `FOLDER` or `SYNC` mode, the **OneDrive-Standard** button asks the Native
 Messaging host for the default export root and stores it in extension settings.
 New feeds request only their specific host permission when they are added.
+
+## Search Context
+
+Useful discovery phrases for this repository:
+
+- `RSS-BOOKSTORE file-bricks`
+- `RSS Atom browser extension bookmarks Native Messaging`
+- `Windows RSS folder sync .url files browser extension`
+- `local-first RSS bookmark extension Chromium`
+- `RSS-BOOK vs RSS-BOOKSTORE`
+
+RSS-BOOKSTORE is not a hosted feed reader, not a cloud RSS service, not a
+general bookmark manager, and not the Chrome Web Store build of RSS-BOOK. It is
+a sideloaded Chromium extension for power users who want RSS/Atom entries as
+browser bookmarks and as local Windows `.url` files.
 
 ## Troubleshooting
 

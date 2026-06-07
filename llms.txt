@@ -1,0 +1,54 @@
+# RSS-BOOKSTORE
+
+Canonical repository: https://github.com/file-bricks/RSS-BOOKSTORE
+Sibling project: https://github.com/file-bricks/RSS-BOOK
+Owner: file-bricks
+Status: alpha, GitHub/sideloading distribution
+License: MIT
+
+RSS-BOOKSTORE is a local-first Manifest V3 Chromium extension for power users
+who want RSS and Atom feed entries saved as browser bookmarks and mirrored into
+a Windows folder as `.url` shortcut files.
+
+## Primary Use
+
+- Add RSS/Atom feeds in the browser extension options page.
+- Store feed entries as Chromium bookmarks.
+- Optionally mirror entries to a local Windows folder through a Python Native
+  Messaging host.
+- Use `SYNC` mode for bidirectional bookmark/folder synchronization.
+- Prefer RSS-BOOK when a store-friendly extension without Native Messaging is
+  needed.
+
+## Important Files
+
+- `README.md` - install, Native Messaging setup, usage and troubleshooting.
+- `manifest.json` - Manifest V3 extension metadata.
+- `sw.js` - service worker and feed update flow.
+- `lib/` - bookmarks, permissions, Native Messaging and sync helpers.
+- `ui/` - popup and options UI.
+- `native_host/` - Python Native Messaging host and PowerShell installer.
+- `scripts/package_github_release.ps1` - GitHub release ZIP builder.
+- `tests/` - JavaScript extension tests and Python Native Messaging tests.
+
+## Search Phrases
+
+- RSS-BOOKSTORE file-bricks
+- RSS Atom browser extension bookmarks Native Messaging
+- Windows RSS folder sync .url files browser extension
+- local-first RSS bookmark extension Chromium
+- RSS-BOOK vs RSS-BOOKSTORE
+- Native Messaging RSS bookmarks extension
+
+## Disambiguation
+
+RSS-BOOKSTORE is not a hosted feed reader, not a cloud RSS service, not a
+general bookmark manager, not RSS-Bridge, not FreshRSS, not Miniflux, and not
+the Chrome Web Store build of RSS-BOOK. RSS-BOOKSTORE is the sideloaded
+power-user companion with a local Windows folder mirror.
+
+## Safety Boundary
+
+The extension requests per-feed host permissions instead of blanket access.
+Folder sync depends on a local Native Messaging host registered by the user.
+The project is alpha software and should be validated before everyday use.
