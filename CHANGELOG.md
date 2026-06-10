@@ -5,6 +5,19 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
 
 ## [Unreleased]
 
+### Fehlerbehebung / Fixed
+
+- Release-ZIP `v1.0.0` enthielt nur 6 von 11 `lib/`-Modulen. Die fünf fehlenden
+  Module (`discovery.js`, `export.js`, `i18n.js`, `opml.js`, `url_safety.js`) sind
+  jetzt im neu gebauten ZIP enthalten.
+- `scripts/package_github_release.ps1`: BUGSWEEP-Backup-Artefakte (`.bak`-Dateien)
+  werden jetzt automatisch aus dem Release-ZIP ausgeschlossen.
+
+### Tests / Tests
+
+- `tests/release-package.test.mjs`: Neuer Test prüft, dass das gebaute ZIP alle
+  11 `lib/*.js`-Module enthält und keine `.bak`-Dateien.
+
 ### Dokumentation / Documentation
 
 - README um Start-Here-Tabelle, Suchkontext und klare Abgrenzung zu gehosteten

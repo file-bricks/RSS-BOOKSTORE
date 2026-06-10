@@ -132,6 +132,11 @@ function Test-ExcludedRelativePath {
         }
     }
 
+    $leaf = $segments[-1]
+    if ($leaf -match '\.bak$') {
+        return $true
+    }
+
     return $false
 }
 

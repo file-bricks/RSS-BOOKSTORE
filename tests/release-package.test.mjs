@@ -70,6 +70,69 @@ test("GitHub release package excludes development-only files", () => {
   }
 });
 
+test("GitHub release package ZIP contains all lib modules and no bak files", () => {
+  const outputDir = fs.mkdtempSync(path.join(os.tmpdir(), "rss-bookstore-release-libcheck-"));
+  try {
+    execFileSync(
+      "powershell",
+      [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "scripts\\package_github_release.ps1",
+        "-OutputDir",
+        outputDir,
+      ],
+      { encoding: "utf8" },
+    );
+
+    const zipPath = path.join(outputDir, "RSS-BOOKSTORE-1.0.0-github.zip");
+    const escapedZipPath = zipPath.replaceAll("'", "''");
+    const listEntriesScript = `
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+$archive = [System.IO.Compression.ZipFile]::OpenRead('${escapedZipPath}')
+try {
+  $archive.Entries | ForEach-Object { $_.FullName } | ConvertTo-Json
+} finally {
+  $archive.Dispose()
+}
+`;
+    const entries = JSON.parse(
+      execFileSync("powershell", ["-NoProfile", "-Command", listEntriesScript], { encoding: "utf8" }),
+    );
+    const normalized = entries.map((e) => e.replaceAll("\\", "/"));
+
+    const expectedLibFiles = [
+      "bookmarks.js",
+      "discovery.js",
+      "export.js",
+      "i18n.js",
+      "native.js",
+      "opml.js",
+      "permissions.js",
+      "rss.js",
+      "storage.js",
+      "sync.js",
+      "url_safety.js",
+    ];
+    for (const lib of expectedLibFiles) {
+      assert.ok(
+        normalized.some((e) => e.endsWith(`lib/${lib}`)),
+        `ZIP is missing lib/${lib}`,
+      );
+    }
+
+    assert.equal(
+      normalized.some((e) => e.endsWith(".bak")),
+      false,
+      "ZIP must not contain .bak files",
+    );
+  } finally {
+    fs.rmSync(outputDir, { recursive: true, force: true });
+  }
+});
+
 test("GitHub release package omits cache folders inside included directories", () => {
   const outputDir = fs.mkdtempSync(path.join(os.tmpdir(), "rss-bookstore-release-"));
   const cacheDir = path.join("scripts", "__pycache__");
