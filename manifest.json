@@ -3,8 +3,19 @@
   "name": "RSS-BOOKSTORE",
   "version": "1.0.0",
   "description": "Erweiterte RSS/Atom-Extension mit Bookmark-Export und Native Messaging Sync.",
-  "permissions": ["bookmarks", "storage", "alarms", "notifications", "nativeMessaging"],
-  "optional_host_permissions": ["http://*/*", "https://*/*"],
+  "permissions": [
+    "bookmarks",
+    "storage",
+    "alarms",
+    "notifications",
+    "nativeMessaging",
+    "scripting",
+    "activeTab"
+  ],
+  "optional_host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
   "background": {
     "service_worker": "sw.js",
     "type": "module"
