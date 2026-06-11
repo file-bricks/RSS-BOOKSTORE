@@ -12,11 +12,33 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
   jetzt im neu gebauten ZIP enthalten.
 - `scripts/package_github_release.ps1`: BUGSWEEP-Backup-Artefakte (`.bak`-Dateien)
   werden jetzt automatisch aus dem Release-ZIP ausgeschlossen.
+- `sw.js` (ETag-Cache): `??` in `updateOneFeed` durch `||` ersetzt — bei HTTP-200-
+  Antwort ohne `ETag`/`Last-Modified`-Header wird der gespeicherte Wert beibehalten
+  statt geleert und die 304-Cache-Validierung damit deaktiviert.
+- `sw.js` (leerer-Items-Pfad): Fehlende Titel-Aktualisierung ergänzt;
+  `title: feed.title || parsed.title` gilt jetzt auch wenn der Server keine neuen
+  Items liefert.
+- Bug A (`ui/options.js`): OPML-Export-Anker nicht im DOM eingehängt;
+  `revokeObjectURL` synchron aufgerufen → Download in Firefox/iOS Safari defekt.
+  Fix: `body.appendChild/removeChild` + `setTimeout`-Defer.
+- Bug B (`lib/sync.js`): `simpleHash` nutzte `*` statt `Math.imul`; Ganzzahl-
+  Überlauf nach ~44 Zeichen kollabierte lange Titel auf denselben Hash-Key.
+- Bug C (`lib/storage.js`): `upsertFeed`/`removeFeed` ohne Serialisierung;
+  gleichzeitige Alarm- und Message-Handler konnten Writes überschreiben.
+  Fix: Promise-Mutex `withFeedLock`.
+- Bug D (`manifest.json`): `icons`-Feld im PWA-Webmanifest-Array-Format statt
+  Browser-Extension-Objekt-Format. Fix: `{ "16": ..., "48": ..., "128": ... }`.
+- Bug E/F (`manifest.json`): fehlende `scripting`- und `activeTab`-Permissions
+  für `chrome.scripting.executeScript` ergänzt.
 
 ### Tests / Tests
 
 - `tests/release-package.test.mjs`: Neuer Test prüft, dass das gebaute ZIP alle
   11 `lib/*.js`-Module enthält und keine `.bak`-Dateien.
+- `tests/etag-cache-sw.test.mjs`: Titel-Update im leeren-Items-Pfad abgedeckt;
+  `tests/extension-paths.test.mjs` überspringt `__pycache__`-Verzeichnisse global.
+- `tests/bugsweep-20260610.test.mjs`: 12 neue Tests für Bugs A–F; 107 Tests
+  (79 JS + 28 Python) grün.
 
 ### Dokumentation / Documentation
 
@@ -27,6 +49,8 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
   Repo-Kataloge ergänzt.
 - `package.json` um Beschreibung und Keywords für die lokale Extension- und
   Native-Messaging-Positionierung erweitert.
+- `E2E_SMOKE.md`: manuelles End-to-End-Rauchtest-Runbook für Extension-Install,
+  Feed-Polling, Bookmark-, Ordner- und SYNC-Modus ergänzt.
 
 ### Sicherheit / Security
 

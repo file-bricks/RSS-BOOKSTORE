@@ -10,6 +10,14 @@ RSS-BOOKSTORE is a local-first Manifest V3 Chromium extension for power users
 who want RSS and Atom feed entries saved as browser bookmarks and mirrored into
 a Windows folder as `.url` shortcut files.
 
+## Audience
+
+- Power users who want RSS/Atom feed entries as Chromium bookmarks with bidirectional folder sync
+- Windows developers building or auditing Manifest V3 browser extensions with Native Messaging
+- Users comparing RSS-BOOK (Chrome Web Store, one-way) vs RSS-BOOKSTORE (sideloading, bidirectional)
+- Developers integrating Python Native Messaging hosts with Chromium extensions
+- LLM agents and crawlers indexing open-source Chromium extension repositories
+
 ## Primary Use
 
 - Add RSS/Atom feeds in the browser extension options page.
@@ -33,12 +41,15 @@ a Windows folder as `.url` shortcut files.
 
 ## Search Phrases
 
-- RSS-BOOKSTORE file-bricks
-- RSS Atom browser extension bookmarks Native Messaging
-- Windows RSS folder sync .url files browser extension
-- local-first RSS bookmark extension Chromium
-- RSS-BOOK vs RSS-BOOKSTORE
-- Native Messaging RSS bookmarks extension
+```
+RSS-BOOKSTORE file-bricks
+RSS Atom browser extension bookmarks Native Messaging
+Windows RSS folder sync .url files browser extension
+local-first RSS bookmark extension Chromium
+RSS-BOOK vs RSS-BOOKSTORE
+Native Messaging RSS bookmarks extension
+Chromium extension bidirectional bookmark sync
+```
 
 ## Disambiguation
 
@@ -52,3 +63,5 @@ power-user companion with a local Windows folder mirror.
 The extension requests per-feed host permissions instead of blanket access.
 Folder sync depends on a local Native Messaging host registered by the user.
 The project is alpha software and should be validated before everyday use.
+
+## Last-checked: 2026-06-11
