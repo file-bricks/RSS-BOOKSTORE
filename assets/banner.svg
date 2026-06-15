@@ -1,0 +1,222 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 340" width="100%" height="100%">
+  <!-- Fonts styling -->
+  <style>
+    .title-text {
+      font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+    .tagline-text {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+    .badge-text {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+  </style>
+
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070A13"/>
+      <stop offset="50%" stop-color="#0F1424"/>
+      <stop offset="100%" stop-color="#151B30"/>
+    </linearGradient>
+
+    <!-- Border Gradient with Active Corner Glow -->
+    <linearGradient id="borderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#475569"/>
+      <stop offset="20%" stop-color="#FF5C00"/>
+      <stop offset="40%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+
+    <!-- Divider Gradient -->
+    <linearGradient id="dividerGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF5C00" stop-opacity="0.8"/>
+      <stop offset="30%" stop-color="#38BDF8" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- RSS Brand Color Gradient -->
+    <linearGradient id="rssOrange" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF5C00"/>
+      <stop offset="100%" stop-color="#FF8A00"/>
+    </linearGradient>
+
+    <!-- Book Color Gradients -->
+    <linearGradient id="bookOrange" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF5C00"/>
+      <stop offset="100%" stop-color="#FFA066"/>
+    </linearGradient>
+    
+    <linearGradient id="bookAmber" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#FBBF24"/>
+    </linearGradient>
+
+    <linearGradient id="bookCoral" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#F87171"/>
+    </linearGradient>
+
+    <linearGradient id="bookSilver" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#64748B"/>
+      <stop offset="100%" stop-color="#E2E8F0"/>
+    </linearGradient>
+
+    <linearGradient id="bookGold" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#B45309"/>
+      <stop offset="100%" stop-color="#FCD34D"/>
+    </linearGradient>
+
+    <!-- Glass Card Fill -->
+    <linearGradient id="glassCard" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.02"/>
+    </linearGradient>
+
+    <!-- Filters -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+    <filter id="ambientGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="40" result="blur" />
+    </filter>
+  </defs>
+
+  <!-- Ambient background glow elements -->
+  <circle cx="165" cy="255" r="150" fill="#FF5C00" opacity="0.12" filter="url(#ambientGlow)" />
+  <circle cx="600" cy="170" r="200" fill="#38BDF8" opacity="0.04" filter="url(#ambientGlow)" />
+  <circle cx="1000" cy="120" r="180" fill="#0D9488" opacity="0.06" filter="url(#ambientGlow)" />
+
+  <!-- Background Card -->
+  <rect x="15" y="15" width="1170" height="310" rx="24" fill="url(#bgGradient)" stroke="url(#borderGradient)" stroke-width="2" />
+  <rect x="16" y="16" width="1168" height="308" rx="23" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.05" />
+
+  <!-- LEFT: RSS + Books Motif (Center at 165, 255) -->
+  <g id="rss-books-icon">
+    <!-- RSS Center Dot (Glowing Circle) -->
+    <circle cx="165" cy="255" r="24" fill="url(#rssOrange)" filter="url(#glow)" />
+    <circle cx="165" cy="255" r="14" fill="#FFFFFF" opacity="0.9" />
+    <!-- Stylized open book shape inside the dot -->
+    <path d="M 158 257 C 161 254 164 254 165 256 C 166 254 169 254 172 257 L 172 251 C 169 249 166 249 165 251 C 164 249 161 249 158 251 Z" fill="#FF5C00" />
+
+    <!-- Shelf 1 (Inner Arc, radius 55) -->
+    <path d="M 165 200 A 55 55 0 0 1 220 255" fill="none" stroke="#334155" stroke-width="5" stroke-linecap="round" opacity="0.8" />
+    
+    <!-- Shelf 2 (Outer Arc, radius 120) -->
+    <path d="M 165 135 A 120 120 0 0 1 285 255" fill="none" stroke="#334155" stroke-width="5" stroke-linecap="round" opacity="0.8" />
+
+    <!-- Inner Shelf Books (radius 80) -->
+    <!-- Book 1 (Orange, rotate -15) -->
+    <g transform="translate(165, 255) rotate(-15) translate(0, -80)">
+      <rect x="-9" y="-25" width="18" height="50" rx="3" fill="url(#bookOrange)" />
+      <rect x="-9" y="-18" width="18" height="4" fill="#FFF" opacity="0.3" />
+      <rect x="-9" y="-10" width="18" height="4" fill="#FFF" opacity="0.3" />
+    </g>
+    <!-- Book 2 (Silver, rotate -45) -->
+    <g transform="translate(165, 255) rotate(-45) translate(0, -80)">
+      <rect x="-9" y="-25" width="18" height="50" rx="3" fill="url(#bookSilver)" />
+      <line x1="0" y1="-20" x2="0" y2="20" stroke="#000" stroke-width="2" opacity="0.15" stroke-dasharray="2 2" />
+    </g>
+    <!-- Book 3 (Coral, rotate -75) -->
+    <g transform="translate(165, 255) rotate(-75) translate(0, -80)">
+      <rect x="-9" y="-25" width="18" height="50" rx="3" fill="url(#bookCoral)" />
+      <rect x="-9" y="10" width="18" height="6" fill="#FFF" opacity="0.3" />
+    </g>
+
+    <!-- Outer Shelf Books (radius 145) -->
+    <!-- Book 4 (Amber, rotate -10) -->
+    <g transform="translate(165, 255) rotate(-10) translate(0, -145)">
+      <rect x="-9" y="-25" width="18" height="50" rx="3" fill="url(#bookAmber)" />
+      <line x1="-5" y1="-20" x2="5" y2="-20" stroke="#FFF" stroke-width="2" opacity="0.4" />
+      <line x1="-5" y1="18" x2="5" y2="18" stroke="#FFF" stroke-width="2" opacity="0.4" />
+    </g>
+    <!-- Book 5 (Orange, rotate -28) -->
+    <g transform="translate(165, 255) rotate(-28) translate(0, -145)">
+      <rect x="-9" y="-25" width="18" height="50" rx="3" fill="url(#bookOrange)" />
+      <circle cx="0" cy="-12" r="3" fill="#FFF" opacity="0.4" />
+      <circle cx="0" cy="12" r="3" fill="#FFF" opacity="0.4" />
+    </g>
+    <!-- Book 6 (Gold, rotate -46) -->
+    <g transform="translate(165, 255) rotate(-46) translate(0, -145)">
+      <rect x="-9" y="-25" width="18" height="50" rx="3" fill="url(#bookGold)" />
+      <rect x="-9" y="-15" width="18" height="3" fill="#FFF" opacity="0.4" />
+      <rect x="-9" y="12" width="18" height="3" fill="#FFF" opacity="0.4" />
+    </g>
+    <!-- Book 7 (Silver, rotate -64) -->
+    <g transform="translate(165, 255) rotate(-64) translate(0, -145)">
+      <rect x="-9" y="-25" width="18" height="50" rx="3" fill="url(#bookSilver)" />
+      <rect x="-9" y="-5" width="18" height="10" fill="#334155" opacity="0.2" />
+    </g>
+    <!-- Book 8 (Coral, rotate -82) -->
+    <g transform="translate(165, 255) rotate(-82) translate(0, -145)">
+      <rect x="-9" y="-25" width="18" height="50" rx="3" fill="url(#bookCoral)" />
+      <line x1="0" y1="-18" x2="0" y2="18" stroke="#FFF" stroke-width="2" opacity="0.3" />
+    </g>
+  </g>
+
+  <!-- RIGHT: Wordmark & Tagline & Badges -->
+  <text x="400" y="165" class="title-text" font-weight="800" font-size="72" letter-spacing="1">
+    <tspan fill="url(#rssOrange)">RSS</tspan><tspan fill="#64748B">-</tspan><tspan fill="#F8FAFC">BOOKSTORE</tspan>
+  </text>
+
+  <!-- Divider Line -->
+  <line x1="400" y1="185" x2="1080" y2="185" stroke="url(#dividerGradient)" stroke-width="2" />
+
+  <!-- Tagline -->
+  <text x="400" y="218" class="tagline-text" font-weight="500" font-size="24" fill="#94A3B8" letter-spacing="0.5">Power-User RSS Feed Manager</text>
+
+  <!-- Chips / Badges -->
+  <!-- Chip 1: Fast Sync -->
+  <g transform="translate(400, 240)">
+    <rect x="0" y="0" width="105" height="28" rx="14" fill="#FFFFFF" fill-opacity="0.03" stroke="#FF5C00" stroke-width="1.5" stroke-opacity="0.5" />
+    <text x="52.5" y="18" class="badge-text" fill="#FF8A00" text-anchor="middle">Fast Sync</text>
+  </g>
+  
+  <!-- Chip 2: Smart Folders -->
+  <g transform="translate(517, 240)">
+    <rect x="0" y="0" width="125" height="28" rx="14" fill="#FFFFFF" fill-opacity="0.03" stroke="#0D9488" stroke-width="1.5" stroke-opacity="0.5" />
+    <text x="62.5" y="18" class="badge-text" fill="#14B8A6" text-anchor="middle">Smart Folders</text>
+  </g>
+
+  <!-- Chip 3: Offline First -->
+  <g transform="translate(654, 240)">
+    <rect x="0" y="0" width="115" height="28" rx="14" fill="#FFFFFF" fill-opacity="0.03" stroke="#0284C7" stroke-width="1.5" stroke-opacity="0.5" />
+    <text x="57.5" y="18" class="badge-text" fill="#38BDF8" text-anchor="middle">Offline First</text>
+  </g>
+
+  <!-- Chip 4: OPML Import -->
+  <g transform="translate(781, 240)">
+    <rect x="0" y="0" width="135" height="28" rx="14" fill="#FFFFFF" fill-opacity="0.03" stroke="#8B5CF6" stroke-width="1.5" stroke-opacity="0.5" />
+    <text x="67.5" y="18" class="badge-text" fill="#A78BFA" text-anchor="middle">OPML Import</text>
+  </g>
+
+  <!-- DECORATIVE DETAILS: FLOATING CARDS (Far Right, x=930..1090) -->
+  <!-- Back Card -->
+  <g transform="translate(950, 75) rotate(3)">
+    <rect x="0" y="0" width="140" height="85" rx="12" fill="url(#glassCard)" stroke="#334155" stroke-width="1.5" stroke-opacity="0.3" />
+    <rect x="12" y="15" width="25" height="6" rx="1.5" fill="#38BDF8" opacity="0.3" />
+    <rect x="12" y="27" width="116" height="4" rx="1" fill="#94A3B8" opacity="0.2" />
+    <rect x="12" y="37" width="116" height="4" rx="1" fill="#94A3B8" opacity="0.2" />
+    <rect x="12" y="47" width="80" height="4" rx="1" fill="#94A3B8" opacity="0.2" />
+  </g>
+
+  <!-- Front Card -->
+  <g transform="translate(930, 90) rotate(-3)">
+    <rect x="0" y="0" width="160" height="95" rx="12" fill="url(#glassCard)" stroke="#475569" stroke-width="1.5" stroke-opacity="0.5" />
+    <!-- tiny orange dot indicator -->
+    <circle cx="18" cy="18" r="4" fill="#FF5C00" />
+    <!-- Feed source title placeholder -->
+    <rect x="28" y="14" width="75" height="8" rx="2" fill="#E2E8F0" opacity="0.8" />
+    <!-- Article Title Placeholders -->
+    <rect x="14" y="36" width="132" height="5" rx="1.5" fill="#94A3B8" opacity="0.5" />
+    <rect x="14" y="46" width="110" height="5" rx="1.5" fill="#94A3B8" opacity="0.5" />
+    <!-- Book/Article categories badges -->
+    <rect x="14" y="66" width="40" height="12" rx="6" fill="#0D9488" fill-opacity="0.15" stroke="#0D9488" stroke-width="0.5" stroke-opacity="0.4" />
+    <rect x="58" y="66" width="30" height="12" rx="6" fill="#FF5C00" fill-opacity="0.1" stroke="#FF5C00" stroke-width="0.5" stroke-opacity="0.3" />
+  </g>
+</svg>

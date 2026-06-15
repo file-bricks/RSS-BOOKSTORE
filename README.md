@@ -1,6 +1,15 @@
+<img src="assets/banner.svg" width="100%" alt="RSS-BOOKSTORE Banner">
+
 # RSS-BOOKSTORE
 
 [![RSS-BOOKSTORE tests](https://github.com/file-bricks/RSS-BOOKSTORE/actions/workflows/tests.yml/badge.svg)](https://github.com/file-bricks/RSS-BOOKSTORE/actions/workflows/tests.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Platform: Windows](https://img.shields.io/badge/platform-Windows-lightgrey.svg)]()
+[![Manifest V3](https://img.shields.io/badge/Manifest-V3-orange.svg)]()
+
+> Power-user Chromium extension — saves RSS/Atom feeds as bookmarks and mirrors them to a local Windows folder via Native Messaging.
+
+
 
 > **Alpha — nicht produktiv getestet / Alpha — not production-tested**
 > This is an alpha release. Core features are implemented and covered by automated
