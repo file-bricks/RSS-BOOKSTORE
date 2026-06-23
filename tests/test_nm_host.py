@@ -285,6 +285,36 @@ class HandleRequestTests(unittest.TestCase):
             self.assertTrue(removed["changed"])
             self.assertEqual(removed["changes"]["removed"][0]["relativePath"], "Feed/Entry.url")
 
+    def test_native_host_errors_use_utf8_german_umlauts(self) -> None:
+        with TemporaryDirectory() as temp_dir:
+            stdin = io.BytesIO(
+                _encode_message(
+                    {
+                        "cmd": "watch_folder",
+                        "baseDir": temp_dir,
+                        "intervalMs": 60_001,
+                    }
+                )
+            )
+            stdout = io.BytesIO()
+            exit_code = serve(stdin, stdout)
+            interval_response = _decode_message(stdout.getvalue())
+
+            self.assertEqual(exit_code, 0)
+            self.assertFalse(interval_response["ok"])
+            self.assertIn("höchstens", interval_response["message"])
+
+            with self.assertRaises(NativeHostError) as key_cm:
+                handle_request(
+                    {
+                        "cmd": "poll_folder_changes",
+                        "baseDir": temp_dir,
+                        "knownState": {1: {"relativePath": "bad.url"}},
+                    }
+                )
+
+            self.assertIn("Schlüssel", key_cm.exception.message)
+
     def test_unknown_command_raises_error(self) -> None:
         with self.assertRaisesRegex(Exception, "Unbekanntes Kommando"):
             handle_request({"cmd": "does_not_exist"})

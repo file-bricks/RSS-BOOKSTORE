@@ -116,7 +116,7 @@ def _expect_int(
     if minimum is not None and value < minimum:
         raise NativeHostError("invalid_request", f"Feld '{field_name}' muss mindestens {minimum} sein.")
     if maximum is not None and value > maximum:
-        raise NativeHostError("invalid_request", f"Feld '{field_name}' darf hoechstens {maximum} sein.")
+        raise NativeHostError("invalid_request", f"Feld '{field_name}' darf höchstens {maximum} sein.")
     return value
 
 
@@ -219,7 +219,7 @@ def _normalize_known_state(value: object, field_name: str = "knownState") -> dic
     normalized: dict[str, dict[str, object]] = {}
     for raw_key, raw_entry in value.items():
         if not isinstance(raw_key, str) or not raw_key.strip():
-            raise NativeHostError("invalid_request", f"Schluessel in '{field_name}' muss ein String sein.")
+            raise NativeHostError("invalid_request", f"Schlüssel in '{field_name}' muss ein String sein.")
         entry = _expect_mapping(raw_entry, f"{field_name}.{raw_key}")
         relative_path = entry.get("relativePath")
         if not isinstance(relative_path, str) or not relative_path.strip():
