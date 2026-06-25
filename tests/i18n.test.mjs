@@ -62,7 +62,6 @@ function makeElement(tag, attrs = {}, children = []) {
     title: "",
     getAttribute(name) { return attrs[name] ?? null; },
     querySelectorAll(selector) {
-      const key = selector.replace(/\[|\]/g, "").replace("data-i18n-", "").replace("data-i18n", "data-i18n");
       return children.filter(c => c.getAttribute && c.getAttribute(selector.match(/\[([^\]]+)\]/)?.[1]) !== null);
     }
   };

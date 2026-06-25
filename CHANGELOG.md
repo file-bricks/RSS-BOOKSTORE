@@ -7,6 +7,8 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
 
 ### Fehlerbehebung / Fixed
 
+- OPML-Import dekodiert XML-Entities jetzt nur einmal und unterstützt numerische
+  Entities, damit maskierte Entity-Texte nicht zu Markup werden.
 - Release-ZIP `v1.0.0` enthielt nur 6 von 11 `lib/`-Modulen. Die fünf fehlenden
   Module (`discovery.js`, `export.js`, `i18n.js`, `opml.js`, `url_safety.js`) sind
   jetzt im neu gebauten ZIP enthalten.

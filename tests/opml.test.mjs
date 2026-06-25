@@ -71,6 +71,27 @@ test("parseOPML decodes XML entities in title and url", () => {
   assert.equal(feed.url, "https://example.com/feed?a=1&b=2");
 });
 
+test("parseOPML decodes XML entities once without turning escaped entity text into markup", () => {
+  const xml = `<opml><body>
+    <outline text="Literal &amp;lt;Feed&amp;gt;" xmlUrl="https://entity.example/feed" />
+  </body></opml>`;
+
+  const [feed] = parseOPML(xml);
+  assert.equal(feed.title, "Literal &lt;Feed&gt;");
+  assert.equal(feed.url, "https://entity.example/feed");
+});
+
+test("parseOPML decodes numeric XML entities", () => {
+  const xml = `<opml><body>
+    <outline text="Caf&#233; Scientifique" xmlUrl="https://cafe.example/feed" />
+    <outline text="R&#xE9;sum&#233;" xmlUrl="https://resume.example/feed" />
+  </body></opml>`;
+
+  const feeds = parseOPML(xml);
+  assert.equal(feeds[0].title, "Café Scientifique");
+  assert.equal(feeds[1].title, "Résumé");
+});
+
 test("parseOPML falls back to text attribute when title is absent", () => {
   const xml = `<opml><body>
     <outline text="Only Text" xmlUrl="https://example.com/feed.xml" />

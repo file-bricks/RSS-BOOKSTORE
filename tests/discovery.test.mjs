@@ -31,7 +31,7 @@ test("probeCommonFeedPaths discovers RSS feed at /feed", async () => {
 
   const found = await probeCommonFeedPaths("https://example.com/", [], fetch);
   const urls = found.map(f => f.url);
-  assert.ok(urls.includes("https://example.com/feed"), `expected /feed in ${JSON.stringify(urls)}`);
+  assert.deepEqual(urls, ["https://example.com/feed"]);
 });
 
 test("probeCommonFeedPaths discovers feed by body content when content-type is plain text", async () => {
