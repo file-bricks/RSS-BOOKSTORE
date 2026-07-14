@@ -1,0 +1,46 @@
+RSS-BOOKSTORE Third-Party License Inventory
+Checked: 2026-07-14
+Scope: direct runtime and declared project dependencies
+
+Summary
+-------
+
+RSS-BOOKSTORE is a local-first Chromium Manifest V3 extension with a Python
+Native Messaging host. This repository currently ships no declared third-party
+runtime package dependency:
+
+- `package.json` has no `dependencies`, `devDependencies`, `optionalDependencies`,
+  or `peerDependencies` sections.
+- No npm lockfile is present.
+- No Python dependency manifest (`requirements*.txt` or `pyproject.toml`) is
+  present.
+- The browser-extension runtime uses Chromium extension APIs and local project
+  JavaScript modules.
+- The Native Messaging host uses Python standard-library modules.
+
+Project License
+---------------
+
+The project source code is licensed under the MIT License. See `LICENSE`.
+
+Direct Runtime Dependencies
+---------------------------
+
+None declared.
+
+Optional Developer Tools
+------------------------
+
+`scripts/generate_icons.py` imports Pillow (`PIL`) when regenerating icon PNGs.
+Pillow is not declared in this repository, is not needed to install or run the
+extension, and is not bundled into the extension or Native Messaging host.
+Generated PNG icon assets are committed separately.
+
+Distribution Notes
+------------------
+
+- This file is a direct dependency inventory, not a frozen transitive SBOM.
+- If a future release adds npm or Python package manifests, update this file and
+  the guard test in `tests/third-party-licenses.test.mjs`.
+- If Pillow or another helper package becomes a declared build dependency, list
+  the exact package, version source, license, and distribution boundary here.
