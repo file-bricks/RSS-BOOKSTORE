@@ -273,6 +273,17 @@
       text-align: center;
       font-size: 12px;
     }
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
   </style>
 </head>
 <body>
@@ -315,13 +326,15 @@
     <div class="info-box">Wird nur bei FOLDER- und SYNC-Modus verwendet. Leer = automatisch ermitteln.</div>
   </div>
   <button id="saveSettings">Einstellungen speichern</button>
-  <div id="settingsStatus" class="status"></div>
+  <div id="settingsStatus" class="status" role="status" aria-live="polite" aria-atomic="true"></div>
 
   <h2>Neuen Feed hinzufügen</h2>
   <div class="add-section">
-    <input id="feedUrl" type="url" placeholder="https://example.com/feed.xml">
+    <label class="visually-hidden" for="feedUrl">Feed-URL</label>
+    <input id="feedUrl" type="url" placeholder="https://example.com/feed.xml" aria-describedby="feedUrlHint">
     <button id="addBtn" class="primary">Hinzufügen</button>
   </div>
+  <div id="feedUrlHint" class="visually-hidden">RSS- oder Atom-Feed-URL eingeben, zum Beispiel https://example.com/feed.xml.</div>
 
   <h2>Feeds</h2>
   <div class="toolbar">
@@ -331,7 +344,7 @@
     <input type="file" id="opmlFileInput" accept=".opml,.xml,.txt">
   </div>
   <div id="feedList"></div>
-  <div id="feedStatus" class="status"></div>
+  <div id="feedStatus" class="status" role="status" aria-live="polite" aria-atomic="true"></div>
 
   <script src="options.js" type="module"></script>
 </body>

@@ -33,6 +33,7 @@ npm-debug.log*
 yarn-error.log*
 coverage/
 .nyc_output/
+icons/Icon-*.png
 
 # Build- und Release-Artefakte
 dist/

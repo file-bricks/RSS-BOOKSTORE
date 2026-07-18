@@ -5,6 +5,11 @@ const feedList = document.getElementById("feedList");
 const statusEl = document.getElementById("status");
 const discoverSection = document.getElementById("discoverSection");
 
+function getDiscoveredFeedAddLabel(feed) {
+  const target = (feed.title || feed.url || "Feed").trim();
+  return `Feed hinzufügen: ${target}`;
+}
+
 async function render() {
   const feeds = await getAllFeeds();
 
@@ -113,7 +118,9 @@ function showDiscoveredFeeds(feeds) {
 
     const addBtn = document.createElement("button");
     addBtn.textContent = "+";
-    addBtn.title = feed.url;
+    const addLabel = getDiscoveredFeedAddLabel(feed);
+    addBtn.title = addLabel;
+    addBtn.setAttribute("aria-label", addLabel);
     addBtn.addEventListener("click", async () => {
       const id = crypto.randomUUID();
       await upsertFeed(id, {
@@ -135,6 +142,8 @@ function showDiscoveredFeeds(feeds) {
       } catch {}
       addBtn.textContent = "✓";
       addBtn.disabled = true;
+      addBtn.title = `Hinzugefügt: ${feed.title || feed.url}`;
+      addBtn.setAttribute("aria-label", addBtn.title);
       showStatus("Feed hinzugefügt.", "success");
       setTimeout(() => { statusEl.textContent = ""; statusEl.className = "status"; }, 2000);
       await render();

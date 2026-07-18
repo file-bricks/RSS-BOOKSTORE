@@ -139,7 +139,7 @@ async function updateOneFeed(feedId) {
   if (!parsed) {
     await upsertFeed(feedId, {
       lastFetch: Date.now(),
-      lastError: "Feed nicht erreichbar oder ungueltiges Format"
+      lastError: "Feed nicht erreichbar oder ungültiges Format"
     });
     return;
   }

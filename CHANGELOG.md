@@ -9,6 +9,10 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
 
 - OPML-Import dekodiert XML-Entities jetzt nur einmal und unterstützt numerische
   Entities, damit maskierte Entity-Texte nicht zu Markup werden.
+- `ui/popup.js`: Der kompakte `+`-Button in der Feed-Autodiscovery bleibt
+  bewusst symbolisch, liefert jetzt aber einen sprechenden Accessible Name und
+  Tooltip-Kontext pro vorgeschlagenem Feed; der deaktivierte Abschlusszustand
+  `✓` kündigt ebenfalls klar an, dass der Feed bereits hinzugefügt wurde.
 - Release-ZIP `v1.0.0` enthielt nur 6 von 11 `lib/`-Modulen. Die fünf fehlenden
   Module (`discovery.js`, `export.js`, `i18n.js`, `opml.js`, `url_safety.js`) sind
   jetzt im neu gebauten ZIP enthalten.
@@ -35,6 +39,9 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
 
 ### Tests / Tests
 
+- `tests/popup-accessibility.test.mjs`: Neue Regression stellt sicher, dass die
+  kompakte Symbolaktion in der Popup-Feed-Autodiscovery einen stabilen
+  Accessible Name und Tooltip-Kontext exponiert.
 - `tests/release-package.test.mjs`: Neuer Test prüft, dass das gebaute ZIP alle
   11 `lib/*.js`-Module enthält und keine `.bak`-Dateien.
 - `tests/etag-cache-sw.test.mjs`: Titel-Update im leeren-Items-Pfad abgedeckt;
@@ -53,6 +60,9 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
   Native-Messaging-Positionierung erweitert.
 - `E2E_SMOKE.md`: manuelles End-to-End-Rauchtest-Runbook für Extension-Install,
   Feed-Polling, Bookmark-, Ordner- und SYNC-Modus ergänzt.
+- `MACOS_LINUX_NATIVE_HOST_GATE.md`: macOS-/Linux-Native-Host bleibt ein
+  Nachfrage-Gate; ohne belegten Nutzerbedarf werden keine Platzhalter-Installer
+  oder Host-Ports gestartet.
 
 ### Sicherheit / Security
 
