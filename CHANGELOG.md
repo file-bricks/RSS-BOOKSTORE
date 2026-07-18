@@ -39,6 +39,10 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
 
 ### Tests / Tests
 
+- Manifest-/Icon-Vertrag erneut gegen den echten Projektstand geprüft: `npm test`
+  90/90, fokussierte Python-Native-Host-Suite 29/29 und `git diff --check`
+  grün. Der frühere TASKWRITER-Hinweis auf zwei Manifest-/Icon-Fehler war stale;
+  Produktcode brauchte keinen weiteren Eingriff.
 - `tests/popup-accessibility.test.mjs`: Neue Regression stellt sicher, dass die
   kompakte Symbolaktion in der Popup-Feed-Autodiscovery einen stabilen
   Accessible Name und Tooltip-Kontext exponiert.
@@ -51,6 +55,8 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
 
 ### Dokumentation / Documentation
 
+- `AUFGABEN.txt` und `STATE.md` auf den verifizierten 2026-07-18-Stand
+  synchronisiert; `TW-RBS-01` ist lokal als erledigter Readback-Slice markiert.
 - README um Start-Here-Tabelle, Suchkontext und klare Abgrenzung zu gehosteten
   RSS-Diensten, allgemeinen Bookmark-Managern und der Store-Version RSS-BOOK
   ergänzt.
