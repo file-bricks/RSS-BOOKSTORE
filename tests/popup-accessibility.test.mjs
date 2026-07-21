@@ -145,6 +145,14 @@ function installPopupPage() {
   return elements;
 }
 
+function installPopupPageWithFeeds(feeds) {
+  const elements = installPopupPage();
+  globalThis.chrome.storage.local.get = async keys => {
+    return Object.fromEntries(keys.map(key => [key, key === "feeds" ? feeds : {}]));
+  };
+  return elements;
+}
+
 test("popup autodiscovery add button exposes an accessible name for compact symbol UI", async () => {
   const elements = installPopupPage();
 
@@ -161,4 +169,28 @@ test("popup autodiscovery add button exposes an accessible name for compact symb
   assert.equal(addButton.textContent, "+");
   assert.equal(addButton.title, "Feed hinzufügen: Beispiel Feed");
   assert.equal(addButton.getAttribute("aria-label"), "Feed hinzufügen: Beispiel Feed");
+});
+
+test("popup feed rows expose list semantics and status context", async () => {
+  const elements = installPopupPageWithFeeds({
+    feedA: {
+      id: "feedA",
+      title: "Nachrichten",
+      url: "https://example.com/feed.xml",
+      lastFetch: 0,
+      lastError: "HTTP 500"
+    }
+  });
+
+  await import(`../ui/popup.js?popup-feed-list-accessibility=${Date.now()}`);
+
+  const feedList = elements.get("feedList");
+  assert.equal(feedList.children.length, 1);
+
+  const feedItem = feedList.children[0];
+  assert.equal(feedItem.getAttribute("role"), "listitem");
+  assert.equal(
+    feedItem.getAttribute("aria-label"),
+    "Feed: Nachrichten. Status: nie aktualisiert. Fehler: HTTP 500"
+  );
 });

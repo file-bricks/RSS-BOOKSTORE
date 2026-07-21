@@ -13,6 +13,9 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
   bewusst symbolisch, liefert jetzt aber einen sprechenden Accessible Name und
   Tooltip-Kontext pro vorgeschlagenem Feed; der deaktivierte Abschlusszustand
   `✓` kündigt ebenfalls klar an, dass der Feed bereits hinzugefügt wurde.
+- `ui/popup.html` + `ui/popup.js`: Die kompakte Feed-Liste bleibt sichtbar
+  unverändert, exponiert aber jetzt Listensemantik und pro Feed-Zeile einen
+  zusammenfassenden Accessible Name mit Feedname, Aktualitätsstatus und Fehlern.
 - Release-ZIP `v1.0.0` enthielt nur 6 von 11 `lib/`-Modulen. Die fünf fehlenden
   Module (`discovery.js`, `export.js`, `i18n.js`, `opml.js`, `url_safety.js`) sind
   jetzt im neu gebauten ZIP enthalten.
@@ -43,6 +46,8 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
   90/90, fokussierte Python-Native-Host-Suite 29/29 und `git diff --check`
   grün. Der frühere TASKWRITER-Hinweis auf zwei Manifest-/Icon-Fehler war stale;
   Produktcode brauchte keinen weiteren Eingriff.
+- `tests/popup-accessibility.test.mjs`: Neuer Guard prüft die semantische
+  Feed-Liste und den zusammengefassten Screenreader-Kontext der Popup-Feedzeilen.
 - `tests/popup-accessibility.test.mjs`: Neue Regression stellt sicher, dass die
   kompakte Symbolaktion in der Popup-Feed-Autodiscovery einen stabilen
   Accessible Name und Tooltip-Kontext exponiert.

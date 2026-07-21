@@ -10,6 +10,15 @@ function getDiscoveredFeedAddLabel(feed) {
   return `Feed hinzufügen: ${target}`;
 }
 
+function getFeedItemLabel(feed, updateText) {
+  const title = feed.title || feed.url || "Feed";
+  const parts = [`Feed: ${title}`, `Status: ${updateText}`];
+  if (feed.lastError) {
+    parts.push(`Fehler: ${feed.lastError}`);
+  }
+  return parts.join(". ");
+}
+
 async function render() {
   const feeds = await getAllFeeds();
 
@@ -22,6 +31,7 @@ async function render() {
   for (const feed of feeds) {
     const div = document.createElement("div");
     div.className = "feed-item";
+    div.setAttribute("role", "listitem");
 
     const name = document.createElement("span");
     name.className = "feed-name";
@@ -33,12 +43,14 @@ async function render() {
 
     const time = document.createElement("span");
     time.className = "feed-count";
+    let updateText = "nie aktualisiert";
     if (feed.lastFetch) {
       const ago = Math.round((Date.now() - feed.lastFetch) / 60000);
-      time.textContent = ago < 1 ? "gerade eben" : `vor ${ago} Min`;
+      updateText = ago < 1 ? "gerade eben" : `vor ${ago} Min`;
     } else {
-      time.textContent = "nie aktualisiert";
+      updateText = "nie aktualisiert";
     }
+    time.textContent = updateText;
     info.appendChild(time);
 
     if (feed.lastError) {
@@ -51,6 +63,7 @@ async function render() {
 
     div.appendChild(name);
     div.appendChild(info);
+    div.setAttribute("aria-label", getFeedItemLabel(feed, updateText));
     feedList.appendChild(div);
   }
 }
