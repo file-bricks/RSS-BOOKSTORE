@@ -5,6 +5,13 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
 
 ## [Unreleased]
 
+### Dokumentation & Sichtbarkeit / Documentation & Visibility
+
+- Erstellen von `README_de.md` als vollständige deutsche Startseite und Dokumentation für deutschsprachige Anwender.
+- Hinzufügen einer zweisprachigen Umschaltnavigation (`[English](README.md) | [Deutsch](README_de.md)`) am Kopf von `README.md` und `README_de.md`.
+- Integration eines Mermaid-Architektur- und Datenflussdiagramms in `README.md` und `README_de.md` zur Visualisierung der Zusammenspiel von Service Worker, Bookmarks API, Python Native Messaging Host und Windows-Ordner.
+- Aktualisierung von `llms.txt` mit standardisiertem `Last-checked: 2026-07-21` Header, erweiterten Suchphrasen und LLM-Kontext für automatisierte Indexer.
+
 ### Fehlerbehebung / Fixed
 
 - OPML-Import dekodiert XML-Entities jetzt nur einmal und unterstützt numerische

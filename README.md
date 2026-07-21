@@ -2,6 +2,8 @@
 
 # RSS-BOOKSTORE
 
+[English](README.md) | [Deutsch](README_de.md)
+
 [![RSS-BOOKSTORE tests](https://github.com/file-bricks/RSS-BOOKSTORE/actions/workflows/tests.yml/badge.svg)](https://github.com/file-bricks/RSS-BOOKSTORE/actions/workflows/tests.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Platform: Windows](https://img.shields.io/badge/platform-Windows-lightgrey.svg)]()
@@ -21,10 +23,20 @@ RSS-BOOKSTORE is the power-user edition of RSS-BOOK: a Manifest V3 browser
 extension that saves RSS/Atom entries as bookmarks and can also mirror them to a
 Windows folder with `.url` files through a Native Messaging host.
 
+```mermaid
+graph TD
+    A[RSS / Atom Feeds] -->|Poll & Parse| B[Sw.js Service Worker]
+    B -->|Store Bookmarks| C[Chromium Bookmarks API]
+    B -->|Native Messaging JSON| D[Python Native Host nm_host.py]
+    D -->|Write .url shortcuts| E[Windows Folder / OneDrive]
+    E -->|Watch & Poll| D
+    D -->|Sync back| B
+```
+
 RSS-BOOKSTORE ist die Power-User-Variante von RSS-BOOK: eine Manifest-V3-
 Browser-Erweiterung, die RSS-/Atom-Einträge als Lesezeichen speichert und sie
 über einen Native-Messaging-Host bidirektional mit einem Windows-Ordner
-synchronisieren kann.
+synchronisieren kann. Lesen Sie die [deutsche Dokumentation (README_de.md)](README_de.md) für eine vollständige Anleitung auf Deutsch.
 
 ## Start Here
 
