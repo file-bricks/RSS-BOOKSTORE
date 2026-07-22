@@ -5,7 +5,7 @@ Sibling project: https://github.com/file-bricks/RSS-BOOK
 Owner: file-bricks
 Status: alpha, GitHub/sideloading distribution
 License: MIT
-Last-checked: 2026-07-21
+Last-checked: 2026-07-22
 
 RSS-BOOKSTORE is a local-first Manifest V3 Chromium extension for power users
 who want RSS and Atom feed entries saved as browser bookmarks and mirrored into
