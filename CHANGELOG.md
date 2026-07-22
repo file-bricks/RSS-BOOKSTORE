@@ -14,6 +14,9 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
 
 ### Fehlerbehebung / Fixed
 
+- `tests/platform-gate.test.mjs` prüft das macOS-/Linux-Demand-Gate nur noch
+  gegen die versionierte Gate-Dokumentation. Dadurch benötigt die CI keine
+  absichtlich lokale, ignorierte Planungsdatei.
 - OPML-Import dekodiert XML-Entities jetzt nur einmal und unterstützt numerische
   Entities, damit maskierte Entity-Texte nicht zu Markup werden.
 - `ui/popup.js`: Der kompakte `+`-Button in der Feed-Autodiscovery bleibt
