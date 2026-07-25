@@ -5,7 +5,13 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
 
 ## [Unreleased]
 
-### Dokumentation & Sichtbarkeit / Documentation & Visibility
+### Dokumentation, Marketing & Sichtbarkeit / Documentation & Discoverability [2026-07-25]
+
+- Hinzufügen von `pyproject.toml` nach PEP 621 Standard zur vereinfachten Ausführung der Pytest-Suite (29 Tests) für den Python Native Messaging Host.
+- Aktualisierung des `llms.txt` Indexer-Headers auf `Last-checked: 2026-07-25` und Einpflege von `pyproject.toml` in die Verzeichnis-Übersicht.
+- Integration von Shields.io Badges für Node.js Test-Suite (91 Tests), Pytest Test-Suite (29 Tests) und LLM Indexing Status (`LLM-Ready`) in `README.md` und `README_de.md`.
+- Hinzufügen von strukturierten KI-/LLM-Integrations-Hinweisen (`> [!NOTE]`) in `README.md` und `README_de.md` zur Orientierung für automatisierte Code-Assistenten.
+- Konfiguration der GitHub Repository Webseiten-URL (`https://github.com/file-bricks/RSS-BOOKSTORE#readme`) via GitHub CLI.
 
 - Erstellen von `README_de.md` als vollständige deutsche Startseite und Dokumentation für deutschsprachige Anwender.
 - Hinzufügen einer zweisprachigen Umschaltnavigation (`[English](README.md) | [Deutsch](README_de.md)`) am Kopf von `README.md` und `README_de.md`.

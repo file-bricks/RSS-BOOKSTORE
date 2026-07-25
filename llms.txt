@@ -5,7 +5,7 @@ Sibling project: https://github.com/file-bricks/RSS-BOOK
 Owner: file-bricks
 Status: alpha, GitHub/sideloading distribution
 License: MIT
-Last-checked: 2026-07-22
+Last-checked: 2026-07-25
 
 RSS-BOOKSTORE is a local-first Manifest V3 Chromium extension for power users
 who want RSS and Atom feed entries saved as browser bookmarks and mirrored into
@@ -32,6 +32,7 @@ a Windows folder as `.url` shortcut files.
 - `README.md` - English landing page, install, Native Messaging setup, usage and troubleshooting.
 - `README_de.md` - Deutsche Startseite, deutsche Dokumentation und Systemanforderungen.
 - `manifest.json` - Manifest V3 extension metadata.
+- `pyproject.toml` - Standard Python project metadata & pytest configuration for Native Messaging host tests.
 - `sw.js` - Service Worker and feed update flow with ETag caching.
 - `lib/` - Bookmarks, permissions, Native Messaging and sync helpers.
 - `ui/` - Dark-first popup and options UI.

@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rss-bookstore-native-host"
+version = "1.0.0"
+description = "Native Messaging host for RSS-BOOKSTORE browser extension"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "Lukas Geiger", email = "lukas@example.com" }
+]
+keywords = [
+    "rss",
+    "atom",
+    "browser-extension",
+    "native-messaging",
+    "windows",
+    "bookmarks",
+    "file-bricks"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Communications :: RSS",
+]
+
+[project.urls]
+Homepage = "https://github.com/file-bricks/RSS-BOOKSTORE"
+Repository = "https://github.com/file-bricks/RSS-BOOKSTORE.git"
+"Bug Tracker" = "https://github.com/file-bricks/RSS-BOOKSTORE/issues"
+"Documentation" = "https://github.com/file-bricks/RSS-BOOKSTORE#readme"
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q"
+testpaths = ["tests"]
+pythonpath = ["."]

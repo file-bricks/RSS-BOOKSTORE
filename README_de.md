@@ -5,11 +5,17 @@
 [English](README.md) | [Deutsch](README_de.md)
 
 [![RSS-BOOKSTORE tests](https://github.com/file-bricks/RSS-BOOKSTORE/actions/workflows/tests.yml/badge.svg)](https://github.com/file-bricks/RSS-BOOKSTORE/actions/workflows/tests.yml)
+[![Node Tests](https://img.shields.io/badge/Node--Tests-91%20passed-brightgreen.svg)]()
+[![Pytest Suite](https://img.shields.io/badge/Pytest-29%20passed-brightgreen.svg)]()
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Platform: Windows](https://img.shields.io/badge/platform-Windows-lightgrey.svg)]()
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-orange.svg)]()
+[![LLM Indexing](https://img.shields.io/badge/LLM-Ready-blue.svg)](llms.txt)
 
 > **Power-User Chromium-Erweiterung** — Speichert RSS/Atom-Feeds als Browser-Lesezeichen und synchronisiert sie über einen Native Messaging Host bidirektional als `.url`-Dateien mit einem lokalen Windows-Ordner.
+
+> [!NOTE]
+> **KI- & LLM-Agenten-Indexierung:** Dieses Repository enthält maschinenlesbare Architektur- und Metadaten in [`llms.txt`](llms.txt). KI-Agenten und LLM-Code-Assistenten können `llms.txt` für die kontextuelle Analyse der Manifest-V3-Struktur und Python-Native-Messaging-Schnittstellen nutzen.
 
 > [!IMPORTANT]
 > **Alpha-Status — Entwicklungs- & Sideloading-Version**

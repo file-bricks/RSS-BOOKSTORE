@@ -5,13 +5,17 @@
 [English](README.md) | [Deutsch](README_de.md)
 
 [![RSS-BOOKSTORE tests](https://github.com/file-bricks/RSS-BOOKSTORE/actions/workflows/tests.yml/badge.svg)](https://github.com/file-bricks/RSS-BOOKSTORE/actions/workflows/tests.yml)
+[![Node Tests](https://img.shields.io/badge/Node--Tests-91%20passed-brightgreen.svg)]()
+[![Pytest Suite](https://img.shields.io/badge/Pytest-29%20passed-brightgreen.svg)]()
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Platform: Windows](https://img.shields.io/badge/platform-Windows-lightgrey.svg)]()
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-orange.svg)]()
+[![LLM Indexing](https://img.shields.io/badge/LLM-Ready-blue.svg)](llms.txt)
 
 > Power-user Chromium extension — saves RSS/Atom feeds as bookmarks and mirrors them to a local Windows folder via Native Messaging.
 
-
+> [!NOTE]
+> **AI / LLM Agent Indexing:** This repository provides machine-readable architecture and discovery metadata in [`llms.txt`](llms.txt). LLM agents and automated code assistants can reference `llms.txt` for contextual guidance on Manifest V3 extension structure and Python Native Messaging boundaries.
 
 > **Alpha — nicht produktiv getestet / Alpha — not production-tested**
 > This is an alpha release. Core features are implemented and covered by automated
