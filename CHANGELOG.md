@@ -11,6 +11,9 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
 - Sanierung von `THIRD_PARTY_LICENSES.txt` und Anpassung des Guard-Tests `tests/third-party-licenses.test.mjs` zur Abdeckung des `pyproject.toml` PEP 621 Metadaten-Manifests.
 - GitHub-Release-Preflight & Paketierungs-Check (TW-RBS-04 / TASKPLAN #642): GitHub Release ZIP v1.0.0 via `package_github_release.ps1` neu gebündelt, SHA256-Checksumme abgeglichen und mit allen 120 Tests (91 Node.js + 29 Pytest) erfolgreich verifiziert.
 - Verifikation der vollständigen Test-Suites (91/91 Node.js-Tests, 29/29 Pytest-Tests bestanden).
+- E2E-Preflight für TW-RBS-02 aktualisiert: Der Live-Smoke bleibt offen, weil der verfügbare
+  kontrollierte Browserzugriff den Erweiterungsmanager nicht öffnen darf; es wurden keine
+  Erweiterung, Registry oder Testdaten verändert.
 
 ### Dokumentation, Marketing & Sichtbarkeit / Documentation & Discoverability [2026-07-25]
 
