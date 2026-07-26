@@ -1,5 +1,5 @@
 RSS-BOOKSTORE Third-Party License Inventory
-Checked: 2026-07-14
+Checked: 2026-07-26
 Scope: direct runtime and declared project dependencies
 
 Summary
@@ -12,8 +12,10 @@ runtime package dependency:
 - `package.json` has no `dependencies`, `devDependencies`, `optionalDependencies`,
   or `peerDependencies` sections.
 - No npm lockfile is present.
-- No Python dependency manifest (`requirements*.txt` or `pyproject.toml`) is
-  present.
+- `pyproject.toml` is present for standard PEP 621 project metadata and Pytest
+  configuration (`[tool.pytest.ini_options]`), with no third-party runtime package
+  dependencies declared.
+- No `requirements*.txt` or third-party package lockfiles are present.
 - The browser-extension runtime uses Chromium extension APIs and local project
   JavaScript modules.
 - The Native Messaging host uses Python standard-library modules.

@@ -13,6 +13,7 @@ test("third-party license inventory documents dependency-free runtime", () => {
   assert.match(licenseText, /Chromium extension APIs/);
   assert.match(licenseText, /Python standard-library modules/);
   assert.match(licenseText, /not a frozen transitive SBOM/);
+  assert.match(licenseText, /pyproject\.toml/);
 });
 
 test("package manifest has no declared third-party dependency sections", () => {
@@ -34,10 +35,10 @@ test("no package lock or python dependency manifest is present without license i
     "yarn.lock",
     "requirements.txt",
     "requirements-dev.txt",
-    "pyproject.toml",
   ]) {
     assert.equal(existsSync(join(projectRoot, relativePath)), false, `${relativePath} needs inventory coverage`);
   }
+  assert.equal(existsSync(join(projectRoot, "pyproject.toml")), true);
 });
 
 test("optional Pillow icon helper remains documented as non-runtime", () => {

@@ -5,6 +5,12 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
 
 ## [Unreleased]
 
+### Technische Hygiene & Doku-Wartung / Maintenance [2026-07-26]
+
+- Aktualisierung des `llms.txt` Indexer-Headers auf `Last-checked: 2026-07-26`.
+- Sanierung von `THIRD_PARTY_LICENSES.txt` und Anpassung des Guard-Tests `tests/third-party-licenses.test.mjs` zur Abdeckung des `pyproject.toml` PEP 621 Metadaten-Manifests.
+- Verifikation der vollständigen Test-Suites (91/91 Node.js-Tests, 29/29 Pytest-Tests bestanden).
+
 ### Dokumentation, Marketing & Sichtbarkeit / Documentation & Discoverability [2026-07-25]
 
 - Hinzufügen von `pyproject.toml` nach PEP 621 Standard zur vereinfachten Ausführung der Pytest-Suite (29 Tests) für den Python Native Messaging Host.
