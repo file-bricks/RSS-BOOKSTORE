@@ -5,6 +5,12 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
 
 ## [Unreleased]
 
+### Technische Hygiene & Doku-Wartung / Maintenance [2026-07-27]
+
+- Aktualisierung des `llms.txt` Indexer-Headers auf `Last-checked: 2026-07-27`.
+- Verifikation aller 120 automatisierter Tests (91/91 Node.js-Tests, 29/29 Pytest-Tests 100% grün).
+- Re-Evaluierung der Repository-Sichtbarkeit und Verifizierung des sauber ausgerichteten README / README_de Auftritts.
+
 ### Technische Hygiene & Doku-Wartung / Maintenance [2026-07-26]
 
 - Aktualisierung des `llms.txt` Indexer-Headers auf `Last-checked: 2026-07-26`.
