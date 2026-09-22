@@ -1,5 +1,5 @@
 RSS-BOOKSTORE Third-Party License Inventory
-Checked: 2026-07-26
+Checked: 2026-09-22
 Scope: direct runtime and declared project dependencies
 
 Summary
@@ -42,6 +42,7 @@ Distribution Notes
 ------------------
 
 - This file is a direct dependency inventory, not a frozen transitive SBOM.
+- See `THIRD_PARTY_LICENSES.md` for the comprehensive Level 1 SBOM and runtime invariants.
 - If a future release adds npm or Python package manifests, update this file and
   the guard test in `tests/third-party-licenses.test.mjs`.
 - If Pillow or another helper package becomes a declared build dependency, list

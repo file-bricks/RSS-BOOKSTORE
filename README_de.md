@@ -6,8 +6,10 @@
 
 [![RSS-BOOKSTORE tests](https://github.com/file-bricks/RSS-BOOKSTORE/actions/workflows/tests.yml/badge.svg)](https://github.com/file-bricks/RSS-BOOKSTORE/actions/workflows/tests.yml)
 [![Node Tests](https://img.shields.io/badge/Node--Tests-91%20passed-brightgreen.svg)]()
-[![Pytest Suite](https://img.shields.io/badge/Pytest-29%20passed-brightgreen.svg)]()
+[![Pytest Suite](https://img.shields.io/badge/Pytest-37%20passed-brightgreen.svg)]()
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Attribution: NOTICE](https://img.shields.io/badge/Attribution-NOTICE-blue.svg)](NOTICE)
+[![SBOM: Level 1](https://img.shields.io/badge/SBOM-Level%201-blue.svg)](THIRD_PARTY_LICENSES.md)
 [![Platform: Windows](https://img.shields.io/badge/platform-Windows-lightgrey.svg)]()
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-orange.svg)]()
 [![LLM Indexing](https://img.shields.io/badge/LLM-Ready-blue.svg)](llms.txt)
@@ -132,6 +134,11 @@ python -B -m unittest discover -s tests -p "test_*.py" -v
 
 ---
 
-## Lizenz & Legal
+## Lizenz & Rechtliches
 
-Lizenziert unter der **MIT-Lizenz**. Siehe [LICENSE](LICENSE) für Details.
+- **Lizenz:** MIT-Lizenz. Siehe [LICENSE](LICENSE) für den vollständigen Lizenztext.
+- **Urheberschaft & Attribution:** Siehe [NOTICE](NOTICE) für Urheberangaben (Lukas Geiger c/o file-bricks / open-bricks) und Architektur-Invarianten.
+- **Drittanbieter-Lizenzen & Level 1 SBOM:** Vollständiges Lizenzinventar, SPDX-Analyse und 10 System-Invarianten (`INV-LOCAL-01`..`INV-SLA-10`) in [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md) und Direktinventar in [THIRD_PARTY_LICENSES.txt](THIRD_PARTY_LICENSES.txt).
+- **Gesetzlicher Haftungsausschluss (§ 521 BGB):** Die Bereitstellung erfolgt unentgeltlich (Gefälligkeitsrecht gem. §§ 516 ff. BGB). Die Haftung ist gesetzlich auf Vorsatz und grobe Fahrlässigkeit beschränkt (§ 521 BGB).
+- **Sicherheitsrichtlinie & SLA:** 48-Stunden-Reaktions-SLA via GitHub Private Vulnerability Reporting. Siehe [SECURITY.md](SECURITY.md).
+

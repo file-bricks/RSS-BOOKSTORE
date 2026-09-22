@@ -1,0 +1,69 @@
+RSS-BOOKSTORE
+=============
+
+Copyright (c) 2026 Lukas Geiger (c/o file-bricks / open-bricks)
+Licensed under the MIT License. See LICENSE for the full license text.
+
+This NOTICE file is provided for informational and attribution purposes
+alongside the license and must be preserved in redistributions of the
+source code and in substantial portions of the software.
+
+--------------------------------------------------------------------
+1. Purpose & Architecture
+--------------------------------------------------------------------
+
+RSS-BOOKSTORE is an unprivileged, local-first power-user Manifest V3
+Chromium extension and Python Native Messaging host that saves RSS/Atom
+feed entries as browser bookmarks and mirrors them to a local Windows
+folder as .url shortcut files with optional bidirectional synchronization.
+
+The package is explicitly designed with the following invariants:
+  * Local-First Architecture (INV-LOCAL-01): Network access is strictly limited
+    to user-configured RSS/Atom feed endpoints with per-feed optional host
+    permissions; no telemetry, no tracking, and no external cloud relays.
+  * Unprivileged user-space execution (INV-LOCAL-02): RunAsInvoker non-elevation;
+    the Native Messaging host registers under HKCU (current user) by default
+    without requiring administrator privileges.
+  * Zero External Runtime Dependencies (INV-LOCAL-03): Pure Chromium extension
+    APIs and Python standard library; zero third-party npm runtime dependencies
+    and zero third-party pip runtime dependencies.
+  * Non-destructive bidirectional sync (INV-LOCAL-04): Preserves user bookmarks
+    and .url files with safe atomic writes and ETag/Last-Modified HTTP caching.
+  * Open standard interoperability (INV-LOCAL-05): Native OPML import/export
+    and standard Windows Internet Shortcut (.url) format.
+  * Zero Copyleft on processed feeds and bookmarks (INV-LOCAL-08): 100% MIT
+    license with unencumbered user data ownership.
+  * 100% Bilingual Documentation parity (INV-LOCAL-09): Full German (README_de.md)
+    and English (README.md) documentation.
+  * Documented 48-hour security disclosure response SLA (INV-LOCAL-10).
+
+--------------------------------------------------------------------
+2. Statutory Disclaimer / Haftung (§ 521 BGB)
+--------------------------------------------------------------------
+
+RSS-BOOKSTORE is distributed free of charge as open-source software
+(unentgeltliche Bereitstellung / Schenkung gem. §§ 516 ff. BGB).
+
+Under German law (§ 521 BGB) and the terms of the MIT License, liability
+is limited to intent (Vorsatz) and gross negligence (grobe Fahrlässigkeit).
+Liability for damages to life, body, or health remains governed by
+mandatory statutory provisions.
+
+USE AT YOUR OWN RISK. No warranty, no maintenance guarantee, and no
+fitness-for-purpose assumed.
+
+--------------------------------------------------------------------
+3. Third-Party Components & Dependencies
+--------------------------------------------------------------------
+
+RSS-BOOKSTORE relies exclusively on permissive, non-copyleft open-source
+runtimes and standards:
+
+  * Python Standard Library (json, struct, sys, os, pathlib, urllib, xml, etc.):
+    Python Software Foundation License version 2.0 (PSF-2.0).
+  * Chromium Extension Web APIs (Bookmarks, Alarms, Storage, Permissions, Runtime):
+    Open web standards implemented by Chromium (BSD-3-Clause / Google Inc.).
+  * Vanilla ES6 JavaScript (Service Worker, UI, and Lib):
+    Original MIT-licensed code without external runtime libraries or frameworks.
+
+See THIRD_PARTY_LICENSES.md and THIRD_PARTY_LICENSES.txt for detailed inventory.

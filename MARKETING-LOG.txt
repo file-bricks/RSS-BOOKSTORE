@@ -1,0 +1,78 @@
+# MARKETING-LOG — RSS-BOOKSTORE
+
+Stand: 2026-09-22
+Kanonisches Repo: https://github.com/file-bricks/RSS-BOOKSTORE
+Geschwisterprojekt: https://github.com/file-bricks/RSS-BOOK
+Organisations-Kontext: file-bricks / open-bricks
+Distributionsmodus: GitHub Sideloading (Manifest V3 + Python Native Messaging)
+
+===============================================================================
+1. POSITIONIERUNG & MARKTKONTEXT
+===============================================================================
+
+RSS-BOOKSTORE schließt die Lücke zwischen reinen Cloud-RSS-Readern (Feedly, Inoreader,
+NewsBlur mit Zwangs-Accounts und Tracking) und einfachen Browser-Erweiterungen.
+
+Ziel: Ein lokales, unprivilegiertes Power-User-Werkzeug, das RSS- und Atom-Feeds
+direkt in die native Lesezeichen-Hierarchie des Browsers überführt und optional
+vollständig bidirektional mit einem lokalen Windows-Ordner (z. B. auf OneDrive)
+als `.url`-Dateien synchronisiert.
+
+Kern-Mehrwerte:
+1. Zero Unsolicited Network Egress (INV-LOCAL-01): Netzwerkzugriff ausschließlich
+   zu benutzerdefinierten Feeds mit feingranularen `optional_permissions`.
+2. Unprivilegierte Ausführung (INV-LOCAL-02): HKCU-Registrierung des Python Native
+   Messaging Hosts ohne Administratorrechte (`RunAsInvoker`).
+3. Zero External Runtime Dependencies (INV-LOCAL-03): Pure WebExtensions APIs
+   und Python-Standardbibliothek (0 npm- und 0 pip-Laufzeitabhängigkeiten).
+4. Bidirektionale Ordner-Synchronisation (INV-LOCAL-04): Lesezeichen und Windows-
+   Verknüpfungsdateien (`.url`) bleiben synchron.
+5. Offene Standard-Interoperabilität (INV-LOCAL-05): Voller OPML-Import/Export
+   und Standard-Windows-Verknüpfungsformate.
+6. Klare Differenzierung zum Store-Geschwister RSS-BOOK:
+   - RSS-BOOK: Store-taugliche Einweg-Lösung (Feed → Lesezeichen).
+   - RSS-BOOKSTORE: Power-User Sideloading-Lösung mit Dateisystem-Spiegelung.
+
+===============================================================================
+2. ZIELGRUPPEN & PERSONAS (PERSONA-01 BIS PERSONA-03)
+===============================================================================
+
+[PERSONA-01] Homelab- & Power-User
+- Profil: Tech-Enthusiasten und Entwickler, die RSS-Feeds in ihre gewohnte
+  Dateiverwaltung (Total Commander, Directory Opus, Windows Explorer, OneDrive)
+  einbetten möchten.
+- Pain Point: Proprietäre Feedreader kapseln Artikel in silos ab; kein Dateizugriff.
+- High-Intent Queries:
+  - "sync RSS feeds to windows folder as url files"
+  - "export browser bookmarks to local folder onedrive"
+  - "manifest v3 native messaging python local sync"
+
+[PERSONA-02] Datenschutz- und Offline-orientierte Leser
+- Profil: Nutzer, die Feed-Inhalte ohne zentrale Tracking-Server oder Telemetrie
+  lokal im Browser konsumieren wollen.
+- Pain Point: Cloud-Reader monetarisieren Lesegewohnheiten; extensions fordern oft
+  `<all_urls>`-Rechte.
+- High-Intent Queries:
+  - "local-first rss reader browser extension"
+  - "minimal permission rss bookmarks extension"
+  - "open source rss bookmark sync without account"
+
+[PERSONA-03] Systemintegratoren & Dateibasiertes Wissensmanagement
+- Profil: Wissensarbeiter (z. B. Obsidian-, Logseq- oder Zotero-Nutzer), die
+  Web-Links aus Feeds als physische Dateien im Filesystem ablegen.
+- Pain Point: Fehlende Brücke zwischen Web-Feed und Desktop-Dokumentenmanagement.
+- High-Intent Queries:
+  - "rss feed to desktop shortcut files"
+  - "save atom feed items as internet shortcuts"
+  - "local directory sync browser extension python"
+
+===============================================================================
+3. COMPLIANCE & QUALITÄTSMETRIKEN
+===============================================================================
+
+- Test-Abdeckung: 100% grün (91 Node.js Tests + Pytest Python Tests).
+- Linter: Ruff check 100% bestanden (0 Warnings, 0 Errors).
+- Mermaid Diagramme: Syntax-geprüft via lint_mermaid.py (10/10 Dateien valide).
+- Rechtliche Absicherung: NOTICE mit Urheber-Attribution, THIRD_PARTY_LICENSES.md
+  mit Level 1 SBOM und Haftungsausschluss gem. § 521 BGB (Gefälligkeitsrecht).
+- Sicherheits-SLA: 48h Erstbewertung über GitHub Private Vulnerability Reporting.

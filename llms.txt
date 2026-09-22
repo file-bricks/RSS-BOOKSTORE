@@ -5,8 +5,8 @@ Sibling project: https://github.com/file-bricks/RSS-BOOK
 Owner: file-bricks
 Status: alpha, GitHub/sideloading distribution
 License: MIT
-Last-checked: 2026-07-27
-Testing: 120/120 tests passed (91 Node.js tests + 29 Pytest tests)
+Last-checked: 2026-09-22
+Testing: 128/128 tests passed (91 Node.js tests + 37 Pytest tests)
 
 RSS-BOOKSTORE is a local-first Manifest V3 Chromium extension for power users
 who want RSS and Atom feed entries saved as browser bookmarks and mirrored into
@@ -32,14 +32,19 @@ a Windows folder as `.url` shortcut files.
 
 - `README.md` - English landing page, install, Native Messaging setup, usage and troubleshooting.
 - `README_de.md` - Deutsche Startseite, deutsche Dokumentation und Systemanforderungen.
+- `NOTICE` - Canonical copyright attribution (Lukas Geiger, file-bricks / open-bricks), architecture invariants, and § 521 BGB disclaimer.
+- `THIRD_PARTY_LICENSES.md` - Comprehensive Level 1 SBOM, SPDX analysis, and runtime invariants INV-LOCAL-01..INV-SLA-10.
+- `THIRD_PARTY_LICENSES.txt` - Direct runtime dependency inventory.
+- `SECURITY.md` - Security policy with 48-hour response SLA and § 521 BGB statutory liability disclaimer.
+- `MARKETING-LOG.txt` - Architectural positioning, target audience personas, and governance metrics.
 - `manifest.json` - Manifest V3 extension metadata.
-- `pyproject.toml` - Standard Python project metadata & pytest configuration for Native Messaging host tests.
+- `pyproject.toml` - Standard Python PEP 621 metadata & pytest configuration for Native Messaging host tests.
 - `sw.js` - Service Worker and feed update flow with ETag caching.
 - `lib/` - Bookmarks, permissions, Native Messaging and sync helpers.
 - `ui/` - Dark-first popup and options UI.
 - `native_host/` - Python Native Messaging host and PowerShell installer.
 - `scripts/package_github_release.ps1` - GitHub release ZIP builder.
-- `tests/` - JavaScript extension tests (91 tests) and Python Native Messaging tests (29 tests).
+- `tests/` - JavaScript extension tests (91 tests) and Python unit/metadata tests (37 tests).
 
 ## Search Phrases
 

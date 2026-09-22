@@ -27,9 +27,11 @@ Falls Private Vulnerability Reporting im Repository nicht verfügbar ist, kontak
 - Inhalte, Tracking oder Schadcode innerhalb fremder Feeds
 - Verlust lokaler Browserdaten außerhalb der von RSS-BOOKSTORE verwalteten Lesezeichen
 
-### Reaktion
+### Reaktion & Service Level Agreement (SLA)
 
-RSS-BOOKSTORE ist ein kleines Open-Source-Projekt. Kritische Meldungen werden priorisiert; bitte geben Sie angemessene Zeit vor einer öffentlichen Offenlegung.
+- **Erstbewertung (Initial Triage):** Innerhalb von 48 Stunden nach Eingang einer vertraulichen Meldung (INV-LOCAL-10).
+- **Behebungsziel (Remediation Target):** Kritische Schwachstellen werden prioritär innerhalb von 5 Werktagen adressiert und über ein Patch-Release bereitgestellt.
+- **Haftungsausschluss gem. § 521 BGB:** Die Bereitstellung dieser Software erfolgt unentgeltlich (Gefälligkeitsrecht). Die Haftung ist auf Vorsatz und grobe Fahrlässigkeit beschränkt. Siehe kanonische `NOTICE`.
 
 ---
 
@@ -60,6 +62,8 @@ If private vulnerability reporting is not available in this repository, contact 
 - Content, tracking, or malicious code inside third-party feeds
 - Loss of local browser data outside bookmarks managed by RSS-BOOKSTORE
 
-### Response
+### Response & Service Level Agreement (SLA)
 
-RSS-BOOKSTORE is a small open-source project. Critical reports are prioritized; please allow reasonable time before public disclosure.
+- **Initial Triage:** Within 48 hours of receipt via GitHub Private Vulnerability Reporting (INV-LOCAL-10).
+- **Remediation Target:** Critical vulnerabilities are prioritized with a target patch release within 5 business days.
+- **Statutory Limitation of Liability (§ 521 BGB):** RSS-BOOKSTORE is provided free of charge under open-source terms. Under German statutory law (§ 521 BGB Gefälligkeitsrecht) and the MIT License, liability is limited to intent and gross negligence. See `NOTICE` for full attribution and legal details.

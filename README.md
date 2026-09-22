@@ -6,8 +6,10 @@
 
 [![RSS-BOOKSTORE tests](https://github.com/file-bricks/RSS-BOOKSTORE/actions/workflows/tests.yml/badge.svg)](https://github.com/file-bricks/RSS-BOOKSTORE/actions/workflows/tests.yml)
 [![Node Tests](https://img.shields.io/badge/Node--Tests-91%20passed-brightgreen.svg)]()
-[![Pytest Suite](https://img.shields.io/badge/Pytest-29%20passed-brightgreen.svg)]()
+[![Pytest Suite](https://img.shields.io/badge/Pytest-37%20passed-brightgreen.svg)]()
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Attribution: NOTICE](https://img.shields.io/badge/Attribution-NOTICE-blue.svg)](NOTICE)
+[![SBOM: Level 1](https://img.shields.io/badge/SBOM-Level%201-blue.svg)](THIRD_PARTY_LICENSES.md)
 [![Platform: Windows](https://img.shields.io/badge/platform-Windows-lightgrey.svg)]()
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-orange.svg)]()
 [![LLM Indexing](https://img.shields.io/badge/LLM-Ready-blue.svg)](llms.txt)
@@ -256,3 +258,12 @@ RSS-BOOK is the store-friendly sibling: no Native Messaging, one-way feed-to-boo
 sync, installable from the Chrome Web Store for any Chromium browser.
 RSS-BOOKSTORE adds a local Windows folder mirror and bidirectional sync via a
 Python Native Messaging host — at the cost of a manual sideload installation.
+
+## License & Legal Invariants
+
+- **License:** MIT License. See [LICENSE](LICENSE) for the full license text.
+- **Attribution & Notice:** Canonical author and project attribution in [NOTICE](NOTICE) (Lukas Geiger c/o file-bricks / open-bricks).
+- **Third-Party Licenses & Level 1 SBOM:** Full SBOM, SPDX analysis, and runtime invariants (`INV-LOCAL-01`..`INV-SLA-10`) in [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md) and direct inventory in [THIRD_PARTY_LICENSES.txt](THIRD_PARTY_LICENSES.txt).
+- **Statutory Limitation of Liability (§ 521 BGB):** Distributed free of charge under German statutory gift and gratuity law (§§ 516 ff. BGB). Liability is limited to intent and gross negligence (§ 521 BGB).
+- **Security Policy & SLA:** Documented 48-hour initial response SLA via GitHub Private Vulnerability Reporting. See [SECURITY.md](SECURITY.md).
+

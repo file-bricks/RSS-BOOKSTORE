@@ -57,3 +57,36 @@ logs/
 desktop.ini
 Thumbs.db
 .DS_Store
+
+# Multi-Host Sync- und Cloud-Konfliktschutz
+*conflicted copy*
+* (Kopie)*
+* (Copy)*
+*-WORKSTATION*
+*-WORKSTATION-LG*
+*-ASUS*
+*-ASUS-GEI*
+*-LAPTOP*
+*-Mac Studio*
+*-MacBook*
+*.orig
+*.rej
+*.sync-temp-*
+
+# Lock-System & Koordinationsdateien
+LOCK
+LOCK.*
+LOCK*.txt
+LOCK.user.*
+LOCK.until.*
+LOCK.condition.*
+LOCK.permissions.json
+.automation-lock
+
+# Test- & Tooling-Caches
+.pytest_tmp/
+.ruff_cache/
+.hypothesis/
+.mypy_cache/
+uv.lock
+!package-lock.json

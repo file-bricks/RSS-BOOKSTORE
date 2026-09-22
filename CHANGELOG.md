@@ -5,6 +5,18 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
 
 ## [Unreleased]
 
+### Technische Hygiene, CI-Härtung, Level 1 SBOM & Vertragstests / Maintenance [2026-09-22]
+
+- **Kanonische NOTICE:** Wurzel-`NOTICE`-Datei angelegt mit Urheber-Attribution (Lukas Geiger c/o file-bricks / open-bricks), Architektur-Invarianten, § 521 BGB Haftungsausschluss und Laufzeit-Isolation.
+- **Level 1 SBOM:** `THIRD_PARTY_LICENSES.md` mit 10 System-Invarianten (`INV-LOCAL-01`..`INV-SLA-10`), Unprivileged `RunAsInvoker` Non-Elevation Zertifizierung und Zero-Copyleft-Garantie (100% MIT, 0% Copyleft) erstellt; Direktinventar `THIRD_PARTY_LICENSES.txt` harmonisiert.
+- **PEP 621 Standardisierung:** `pyproject.toml` um `license-files = ["LICENSE", "NOTICE", "THIRD_PARTY_LICENSES.md", "THIRD_PARTY_LICENSES.txt"]`, erweiterte `project.urls` (Notice, Third-Party Licenses, Parent Organization, Sibling Project) und Pytest `norecursedirs` ergänzt. Version 1.0.0 strikt eingefroren (T-20260920-167562623).
+- **Multi-Host Git-Schutz:** `.gitignore` gehärtet gegen Cloud-Sync-Artefakte (`*-WORKSTATION*`, `*-ASUS*`, `*-LAPTOP*`, `*-Mac Studio*`, `*conflicted copy*`), Lock-Muster (`LOCK*`, `LOCK.user.*`, `LOCK.until.*`, `LOCK.condition.*`, `.automation-lock`) und Test-Caches (`.pytest_tmp/`, `.ruff_cache/`, `uv.lock`, `!package-lock.json`).
+- **CI/CD Workflow-Härtung:** `.github/workflows/tests.yml` um Concurrency (`cancel-in-progress: true`), Job-Timeout (15m), Least-Privilege-Permissions (`contents: read`), Ruff-Linter-Schritt und Pytest-Ausführung erweitert; `stale.yml` (Timeout 10m) und `welcome.yml` (Timeout 5m) mit Concurrency und Timeouts gehärtet.
+- **Sicherheitsrichtlinie & Haftung:** `SECURITY.md` um verbindliches 48-Stunden-Reaktions-SLA (INV-LOCAL-10) und gesetzlichen Haftungsausschluss nach § 521 BGB (Gefälligkeitsrecht) ergänzt.
+- **Dokumentations-Parität:** `README.md` und `README_de.md` synchronisiert mit Badges für NOTICE und SBOM Level 1 sowie neuem Abschnitt zu Lizenz & rechtlichen Invarianten.
+- **Vertragstests:** `tests/test_metadata.py` mit umfassenden Vertragstests implementiert (NOTICE, Level 1 SBOM, .gitignore Multi-Host/Lock-Guards, CI Workflow-Timeouts/Permissions/Concurrency, PEP 621 pyproject license-files und Version-Freeze v1.0.0, § 521 BGB und 48h Security SLA).
+- **Lokales Marketing- und Governance-Register:** `MARKETING-LOG.txt` angelegt und initialisiert.
+
 ### Technische Hygiene & Doku-Wartung / Maintenance [2026-07-27]
 
 - Aktualisierung des `llms.txt` Indexer-Headers auf `Last-checked: 2026-07-27`.

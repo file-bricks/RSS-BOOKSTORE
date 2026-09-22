@@ -9,6 +9,7 @@ description = "Native Messaging host for RSS-BOOKSTORE browser extension"
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
+license-files = ["LICENSE", "NOTICE", "THIRD_PARTY_LICENSES.md", "THIRD_PARTY_LICENSES.txt"]
 authors = [
     { name = "Lukas Geiger", email = "lukas@example.com" }
 ]
@@ -38,9 +39,38 @@ Homepage = "https://github.com/file-bricks/RSS-BOOKSTORE"
 Repository = "https://github.com/file-bricks/RSS-BOOKSTORE.git"
 "Bug Tracker" = "https://github.com/file-bricks/RSS-BOOKSTORE/issues"
 "Documentation" = "https://github.com/file-bricks/RSS-BOOKSTORE#readme"
+"Notice" = "https://github.com/file-bricks/RSS-BOOKSTORE/blob/master/NOTICE"
+"Third-Party Licenses" = "https://github.com/file-bricks/RSS-BOOKSTORE/blob/master/THIRD_PARTY_LICENSES.md"
+"Parent Organization" = "https://github.com/file-bricks"
+"Sibling Project (RSS-BOOK)" = "https://github.com/file-bricks/RSS-BOOK"
 
 [tool.pytest.ini_options]
 minversion = "7.0"
-addopts = "-ra -q"
+addopts = "-ra -q --basetemp=.pytest_tmp"
 testpaths = ["tests"]
 pythonpath = ["."]
+norecursedirs = [
+    ".git",
+    ".pytest_cache",
+    ".pytest_tmp",
+    "__pycache__",
+    "build",
+    "dist",
+    ".venv",
+    "venv",
+    ".ruff_cache",
+    "node_modules",
+    "releases",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+exclude = [
+    ".git",
+    "__pycache__",
+    "node_modules",
+    "releases",
+    ".pytest_tmp",
+    ".ruff_cache",
+]
