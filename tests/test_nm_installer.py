@@ -3,9 +3,9 @@
 from __future__ import annotations
 
 import json
-from pathlib import Path
 import subprocess
 import unittest
+from pathlib import Path
 
 
 class NativeHostInstallerTests(unittest.TestCase):
@@ -29,6 +29,7 @@ class NativeHostInstallerTests(unittest.TestCase):
                 "-DryRun",
             ],
             capture_output=True,
+            check=False,
             text=True,
             encoding="utf-8",
             timeout=10,

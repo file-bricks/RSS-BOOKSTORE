@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
+import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
-import unittest
 
 from native_host.favextract_core import (
     BookmarkNode,
