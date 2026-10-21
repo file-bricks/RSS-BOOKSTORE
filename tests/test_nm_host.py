@@ -5,12 +5,12 @@ from __future__ import annotations
 import io
 import json
 import os
-from pathlib import Path
 import struct
 import subprocess
 import sys
-from tempfile import TemporaryDirectory
 import unittest
+from pathlib import Path
+from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
 from native_host.nm_host import NativeHostError, handle_request, serve
@@ -87,26 +87,28 @@ class HandleRequestTests(unittest.TestCase):
                 path.write_text(f"[InternetShortcut]\nURL={href}\n", encoding="utf-8")
                 return path
 
-            with patch("native_host.nm_host.write_url_file", side_effect=flaky_write_url_file):
-                with self.assertRaises(NativeHostError) as cm:
-                    handle_request(
-                        {
-                            "cmd": "export_items",
-                            "baseDir": temp_dir,
-                            "items": [
-                                {
-                                    "folderParts": ["RSS", "Tech News"],
-                                    "title": "First",
-                                    "url": "https://example.com/first",
-                                },
-                                {
-                                    "folderParts": ["RSS", "Tech News"],
-                                    "title": "Second",
-                                    "url": "https://example.com/second",
-                                },
-                            ],
-                        }
-                    )
+            with (
+                patch("native_host.nm_host.write_url_file", side_effect=flaky_write_url_file),
+                self.assertRaises(NativeHostError) as cm,
+            ):
+                handle_request(
+                    {
+                        "cmd": "export_items",
+                        "baseDir": temp_dir,
+                        "items": [
+                            {
+                                "folderParts": ["RSS", "Tech News"],
+                                "title": "First",
+                                "url": "https://example.com/first",
+                            },
+                            {
+                                "folderParts": ["RSS", "Tech News"],
+                                "title": "Second",
+                                "url": "https://example.com/second",
+                            },
+                        ],
+                    }
+                )
 
             self.assertEqual(cm.exception.code, "export_failed")
             self.assertIn("Export fehlgeschlagen", cm.exception.message)
@@ -374,6 +376,7 @@ class ServeTests(unittest.TestCase):
             result = subprocess.run(
                 [sys.executable, str(host_script)],
                 input=b"",
+                check=False,
                 capture_output=True,
                 cwd=temp_dir,
                 timeout=5,

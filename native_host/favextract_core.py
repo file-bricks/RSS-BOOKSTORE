@@ -2,12 +2,11 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
 import os
-from pathlib import Path
 import re
+from dataclasses import dataclass, field
+from pathlib import Path
 from urllib.parse import urlsplit
-
 
 INVALID_FILENAME_CHARS = '<>:"/\\|?*'
 WINDOWS_RESERVED_NAMES = {
@@ -27,7 +26,7 @@ class BookmarkNode:
     type: str
     title: str
     href: str | None = None
-    children: list["BookmarkNode"] = field(default_factory=list)
+    children: list[BookmarkNode] = field(default_factory=list)
 
     def __post_init__(self) -> None:
         if self.type not in {"folder", "link"}:
